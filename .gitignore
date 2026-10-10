@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Production build outputs
+dist/
+client/dist/
+server/dist/
+
+# Environment files & secret keys
+.env
+.env.local
+.env.*.local
+server/.env
+client/.env
+
+# Local data storage & runtime logs
+.data/
+server/.data/
+*.log
+npm-debug.log*
+
+# IDE & OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

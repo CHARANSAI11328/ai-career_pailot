@@ -1,0 +1,32 @@
+{
+  "name": "ai_careerpailot",
+  "version": "1.0.0",
+  "description": "CareerPilot AI - AI-Based Career Counselor, Resume Analyzer & Career Intelligence Platform",
+  "main": "server/dist/index.js",
+  "scripts": {
+    "dev": "concurrently -n \"SERVER,CLIENT\" -c \"blue,green\" \"npm --prefix server run dev\" \"npm --prefix client run dev\"",
+    "build": "npm --prefix server run build && npm --prefix client run build",
+    "deploy": "npm run build && npx gh-pages -d client/dist",
+    "server": "npm --prefix server run dev",
+    "client": "npm --prefix client run dev",
+    "test": "npm --prefix server run test"
+  },
+  "keywords": [
+    "career",
+    "ai",
+    "resume-analyzer",
+    "gemini",
+    "career-counselor",
+    "interview-prep"
+  ],
+  "author": "CareerPilot Team",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "@google/genai": "^2.28.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "gh-pages": "^6.3.0"
+  }
+}
