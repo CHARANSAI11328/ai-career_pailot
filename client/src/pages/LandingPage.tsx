@@ -127,23 +127,21 @@ export const LandingPage: React.FC = () => {
               </div>
 
               {/* Massive Display Heading */}
-              <h1 className="text-4xl sm:text-6xl xl:text-[4rem] font-extrabold text-white tracking-tight leading-[1.08] font-display">
-                Precision career moves, <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 via-indigo-100 to-slate-400">
-                  governed by data.
-                </span>
+              <h1 className="text-4xl sm:text-6xl xl:text-[4.25rem] font-extrabold text-white tracking-tight leading-[1.05] font-display">
+                Autonomous career acceleration, <br />
+                <span className="text-indigo-400">governed by data.</span>
               </h1>
 
               {/* Subtitle / Value proposition */}
               <p className="text-base sm:text-lg text-slate-300 max-w-xl leading-relaxed">
-                Stop relying on generic LLM advice. Inspect deterministic ATS rubrics, quantify accomplishments with the Google XYZ framework, and execute personalized learning roadmaps with verified labor market intelligence.
+                Deterministic ATS rubrics, Google XYZ achievement engineering, and verified labor market intelligence—bridging candidate skill gaps with verifiable outcomes.
               </p>
 
               {/* Button-in-Button CTA Architecture */}
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <button
                   onClick={() => setActiveTab('judgeDemo')}
-                  className="btn-nested-spring group relative inline-flex items-center gap-3 pl-6 pr-2.5 py-2.5 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm shadow-[0_8px_25px_rgba(79,70,229,0.4)]"
+                  className="btn-nested-spring group relative inline-flex items-center gap-3 pl-6 pr-2.5 py-2.5 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm shadow-[0_8px_25px_rgba(79,70,229,0.4)] cursor-pointer"
                 >
                   <Award className="w-4 h-4 text-indigo-200" />
                   <span>Launch Judge Tour</span>
@@ -154,7 +152,7 @@ export const LandingPage: React.FC = () => {
 
                 <button
                   onClick={() => setActiveTab('resume')}
-                  className="btn-nested-spring inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 border border-white/10 hover:border-white/20 text-sm font-medium transition"
+                  className="btn-nested-spring inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 border border-white/10 hover:border-white/20 text-sm font-medium transition cursor-pointer"
                 >
                   <FileText className="w-4 h-4 text-indigo-400" />
                   <span>Audit Resume</span>
@@ -162,9 +160,9 @@ export const LandingPage: React.FC = () => {
 
                 <button
                   onClick={() => setActiveTab('counselor')}
-                  className="btn-nested-spring inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 border border-white/10 hover:border-white/20 text-sm font-medium transition"
+                  className="btn-nested-spring inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 border border-white/10 hover:border-white/20 text-sm font-medium transition cursor-pointer"
                 >
-                  <MessageSquare className="w-4 h-4 text-emerald-400" />
+                  <MessageSquare className="w-4 h-4 text-indigo-400" />
                   <span>AI Counselor</span>
                 </button>
               </div>
@@ -395,7 +393,7 @@ export const LandingPage: React.FC = () => {
             <div className="doppelrand-core p-6 sm:p-8 flex flex-col justify-between h-full space-y-6">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 group-hover:scale-105 transition">
+                  <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 group-hover:scale-105 transition">
                     <MessageSquare className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/5 text-slate-400 border border-white/10 uppercase">
@@ -404,21 +402,21 @@ export const LandingPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-bold text-white font-display group-hover:text-purple-300 transition flex items-center gap-2">
+                  <h3 className="text-xl font-bold text-white font-display group-hover:text-indigo-300 transition flex items-center gap-2">
                     <span>Conversational AI Counselor</span>
-                    <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-purple-400 group-hover:translate-x-1 transition" />
+                    <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-indigo-400 group-hover:translate-x-1 transition" />
                   </h3>
                   <p className="text-sm text-slate-400 mt-2 leading-relaxed">
-                    Personalized mentoring powered by Google Gemini 2.5 Flash. Ask nuanced career pivot dilemmas, salary benchmark questions, and role requirements in English, Telugu, or Hindi.
+                    Personalized mentoring powered by Google Gemini 2.5 Flash. Navigate career pivots, salary benchmark dilemmas, and skill roadmap questions in English, Telugu, or Hindi.
                   </p>
                 </div>
               </div>
 
               {/* Speech Matrix wave simulation */}
-              <div className="bg-black/40 border border-white/5 rounded-xl p-3.5 flex items-center justify-between text-xs font-mono text-purple-300">
+              <div className="bg-black/40 border border-white/5 rounded-xl p-3.5 flex items-center justify-between text-xs font-mono text-indigo-300">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
-                  <span>Interactive Audio & Text</span>
+                  <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
+                  <span>Real-Time Voice & Text Mentoring</span>
                 </div>
                 <span className="text-[10px] text-slate-400">EN // తె // हि</span>
               </div>
@@ -433,7 +431,7 @@ export const LandingPage: React.FC = () => {
             <div className="doppelrand-core p-6 sm:p-8 flex flex-col justify-between h-full space-y-6">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 group-hover:scale-105 transition">
+                  <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 group-hover:scale-105 transition">
                     <Mic className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/5 text-slate-400 border border-white/10 uppercase">
@@ -442,9 +440,9 @@ export const LandingPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-bold text-white font-display group-hover:text-amber-300 transition flex items-center gap-2">
+                  <h3 className="text-xl font-bold text-white font-display group-hover:text-indigo-300 transition flex items-center gap-2">
                     <span>Voice Mock Interview Simulator</span>
-                    <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-amber-400 group-hover:translate-x-1 transition" />
+                    <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-indigo-400 group-hover:translate-x-1 transition" />
                   </h3>
                   <p className="text-sm text-slate-400 mt-2 leading-relaxed">
                     Practice role-specific technical and behavioral interviews using browser Web Speech recognition. Receive instantaneous rubric grading, structure feedback, and STAR rephrase prompts.
@@ -452,9 +450,9 @@ export const LandingPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-black/40 border border-white/5 rounded-xl p-3.5 flex items-center justify-between text-xs font-mono text-amber-300">
+              <div className="bg-black/40 border border-white/5 rounded-xl p-3.5 flex items-center justify-between text-xs font-mono text-indigo-300">
                 <div className="flex items-center gap-2">
-                  <PlayCircle className="w-4 h-4 text-amber-400" />
+                  <PlayCircle className="w-4 h-4 text-indigo-400" />
                   <span>Real-time voice capture</span>
                 </div>
                 <span className="text-emerald-400 font-bold">STAR Graded</span>
@@ -470,7 +468,7 @@ export const LandingPage: React.FC = () => {
             <div className="doppelrand-core p-6 sm:p-8 flex flex-col justify-between h-full space-y-6">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 group-hover:scale-105 transition">
+                  <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 group-hover:scale-105 transition">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/5 text-slate-400 border border-white/10 uppercase">
@@ -479,9 +477,9 @@ export const LandingPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-bold text-white font-display group-hover:text-emerald-300 transition flex items-center gap-2">
+                  <h3 className="text-xl font-bold text-white font-display group-hover:text-indigo-300 transition flex items-center gap-2">
                     <span>Dynamic Learning Roadmap & Milestone Graph</span>
-                    <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-emerald-400 group-hover:translate-x-1 transition" />
+                    <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-indigo-400 group-hover:translate-x-1 transition" />
                   </h3>
                   <p className="text-sm text-slate-400 mt-2 leading-relaxed">
                     Transforms quantified skill deficiencies into week-by-week actionable tracks with prerequisite dependencies, verified open course links (Coursera, MDN, edX), and resume-ready capstone portfolio project prompts.
@@ -491,7 +489,7 @@ export const LandingPage: React.FC = () => {
 
               {/* Progress visual */}
               <div className="bg-black/40 border border-white/5 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono">
-                <span className="text-slate-400">Sample Path: Distributed Systems in Go</span>
+                <span className="text-slate-400">Curriculum Path: Distributed Systems in Go</span>
                 <span className="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
                   8 Weeks • 4 Capstones
                 </span>

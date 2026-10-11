@@ -10,11 +10,11 @@ export const DemoBanner: React.FC<DemoBannerProps> = ({ onOpenKeyModal }) => {
   const { aiStatus, loadDemoProfile, resetDemoData, setActiveTab, profile } = useProfile();
 
   return (
-    <div className="bg-[#090B10] border-b border-white/[0.07] px-4 py-2 text-xs select-none">
-      <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2.5">
+    <div className="bg-[#060709]/95 backdrop-blur-md border-b border-white/[0.08] px-3 sm:px-6 py-1.5 text-xs select-none relative z-40">
+      <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center space-x-3">
           <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium bg-indigo-500/10 text-indigo-300 border border-indigo-500/25">
-            <Award className="w-3 h-3 text-indigo-400" /> HACKATHON EVALUATION HUD
+            <Award className="w-3 h-3 text-indigo-400" /> EVALUATION HUD
           </span>
           <div className="flex items-center gap-2 text-slate-400 text-xs">
             <span className="relative flex h-2 w-2">
@@ -22,7 +22,7 @@ export const DemoBanner: React.FC<DemoBannerProps> = ({ onOpenKeyModal }) => {
               <span className={`relative inline-flex rounded-full h-2 w-2 ${aiStatus?.isLive ? 'bg-emerald-500' : 'bg-amber-500'}`}></span>
             </span>
             <span className="font-mono text-[11px] text-slate-300 hidden md:inline">
-              {aiStatus?.isLive ? 'Gemini 2.5 Flash Online' : 'Heuristic Engine Operational'}
+              {aiStatus?.isLive ? 'Gemini 2.5 Flash Online' : 'Heuristic Engine Active'}
             </span>
           </div>
         </div>

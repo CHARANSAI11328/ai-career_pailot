@@ -333,15 +333,15 @@ export const MockInterviewPage: React.FC = () => {
                   value={userAnswer}
                   onChange={(e) => setUserAnswer(e.target.value)}
                   placeholder="Speak through your microphone or type your structured answer here..."
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-700 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 leading-relaxed font-mono"
+                  className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500/60 leading-relaxed font-mono"
                 />
 
-                <div className="flex items-center justify-between text-xs text-slate-500">
-                  <span>Word count: {userAnswer.trim().split(/\s+/).filter(Boolean).length}</span>
+                <div className="flex items-center justify-between text-xs text-slate-500 font-mono">
+                  <span>Words: {userAnswer.trim().split(/\s+/).filter(Boolean).length}</span>
                   <button
                     onClick={handleSubmitAnswer}
                     disabled={isSubmitting || !userAnswer.trim()}
-                    className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white rounded-xl text-xs font-bold flex items-center gap-2 transition shadow-lg shadow-indigo-600/30"
+                    className="btn-nested-spring px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white rounded-full text-xs font-semibold flex items-center gap-2 transition shadow-[0_4px_16px_rgba(79,70,229,0.35)] cursor-pointer"
                   >
                     <Sparkles className="w-4 h-4" />
                     <span>{isSubmitting ? 'Evaluating Response...' : 'Submit Answer for Rubric Evaluation'}</span>
@@ -352,45 +352,45 @@ export const MockInterviewPage: React.FC = () => {
 
             {/* Immediate Evaluation Feedback Card */}
             {currentQuestion.evaluation && (
-              <div className="mt-6 p-6 bg-slate-950 border border-indigo-500/30 rounded-2xl space-y-4">
-                <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+              <div className="mt-6 p-6 bg-black/60 border border-indigo-500/30 rounded-2xl space-y-4 shadow-inner">
+                <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
                   <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wide text-emerald-400">
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-400">
                       RUBRIC EVALUATION RESULT
                     </span>
-                    <h3 className="text-base font-bold text-white">Answer Score Card</h3>
+                    <h3 className="text-base font-bold text-white font-display">Answer Performance Rubric</h3>
                   </div>
                   <div className="text-right">
-                    <span className="text-2xl font-black text-indigo-400">
+                    <span className="text-3xl font-extrabold text-indigo-400 font-mono tabular-nums">
                       {currentQuestion.evaluation.score}/100
                     </span>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-3 gap-3 text-center">
-                  <div className="p-3 bg-slate-900 border border-slate-800 rounded-xl">
-                    <div className="text-[10px] text-slate-400">Relevance</div>
-                    <div className="text-sm font-bold text-white">{currentQuestion.evaluation.relevanceScore}%</div>
+                <div className="grid grid-cols-3 gap-3 text-center font-mono">
+                  <div className="p-3 bg-white/[0.02] border border-white/5 rounded-xl">
+                    <div className="text-[10px] text-slate-400 uppercase">RELEVANCE</div>
+                    <div className="text-sm font-bold text-white tabular-nums">{currentQuestion.evaluation.relevanceScore}%</div>
                   </div>
-                  <div className="p-3 bg-slate-900 border border-slate-800 rounded-xl">
-                    <div className="text-[10px] text-slate-400">Technical Domain</div>
-                    <div className="text-sm font-bold text-white">{currentQuestion.evaluation.technicalScore}%</div>
+                  <div className="p-3 bg-white/[0.02] border border-white/5 rounded-xl">
+                    <div className="text-[10px] text-slate-400 uppercase">TECHNICAL</div>
+                    <div className="text-sm font-bold text-white tabular-nums">{currentQuestion.evaluation.technicalScore}%</div>
                   </div>
-                  <div className="p-3 bg-slate-900 border border-slate-800 rounded-xl">
-                    <div className="text-[10px] text-slate-400">Clarity & STAR</div>
-                    <div className="text-sm font-bold text-white">{currentQuestion.evaluation.clarityScore}%</div>
+                  <div className="p-3 bg-white/[0.02] border border-white/5 rounded-xl">
+                    <div className="text-[10px] text-slate-400 uppercase">STAR CLARITY</div>
+                    <div className="text-sm font-bold text-white tabular-nums">{currentQuestion.evaluation.clarityScore}%</div>
                   </div>
                 </div>
 
-                <div className="space-y-2 text-xs">
-                  <div className="text-slate-300 font-semibold">Coach Feedback:</div>
-                  <p className="text-slate-400 leading-relaxed">{currentQuestion.evaluation.feedback}</p>
+                <div className="space-y-1.5 text-xs">
+                  <div className="text-slate-200 font-semibold font-mono text-[11px] uppercase">COACH FEEDBACK:</div>
+                  <p className="text-slate-300 leading-relaxed">{currentQuestion.evaluation.feedback}</p>
                 </div>
 
                 {/* Exemplar model answer */}
                 <div className="p-4 bg-indigo-950/30 border border-indigo-500/20 rounded-xl space-y-1.5 text-xs">
-                  <div className="text-[11px] font-bold text-indigo-300">Exemplar Model Response:</div>
-                  <p className="text-slate-300 italic font-mono text-[11px] leading-relaxed">
+                  <div className="text-[11px] font-bold text-indigo-300 font-mono uppercase">Exemplar Model Response:</div>
+                  <p className="text-slate-200 italic font-mono text-[11px] leading-relaxed">
                     "{currentQuestion.evaluation.exemplarAnswer}"
                   </p>
                 </div>
@@ -398,7 +398,7 @@ export const MockInterviewPage: React.FC = () => {
                 <div className="pt-2 flex justify-end">
                   <button
                     onClick={handleNextQuestion}
-                    className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold flex items-center gap-2 transition shadow-lg shadow-indigo-600/30"
+                    className="btn-nested-spring px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-full text-xs font-mono font-semibold flex items-center gap-2 transition shadow-[0_4px_16px_rgba(79,70,229,0.35)] cursor-pointer"
                   >
                     <span>{currentQuestionIndex + 1 < session.questions.length ? 'Next Question' : 'Complete Interview & View Report'}</span>
                     <ArrowRight className="w-4 h-4" />

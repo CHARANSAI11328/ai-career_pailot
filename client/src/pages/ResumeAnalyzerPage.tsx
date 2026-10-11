@@ -353,130 +353,151 @@ export const ResumeAnalyzerPage: React.FC = () => {
 
               {/* 6 Rubric Score Bars */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                <div className="p-4 bg-slate-900/80 border border-slate-800 rounded-2xl">
-                  <div className="flex justify-between text-xs mb-1">
-                    <span className="text-slate-300 font-semibold">Section Completeness (20%)</span>
-                    <span className="text-indigo-400 font-bold">{resume.heuristicScore.sectionCompleteness}%</span>
+                <div className="doppelrand-shell">
+                  <div className="doppelrand-core p-4 space-y-2">
+                    <div className="flex justify-between text-xs font-mono">
+                      <span className="text-slate-300 font-medium">SECTION COMPLETENESS (20%)</span>
+                      <span className="text-indigo-400 font-bold tabular-nums">{resume.heuristicScore.sectionCompleteness}%</span>
+                    </div>
+                    <div className="w-full bg-white/5 rounded-full h-1.5 overflow-hidden">
+                      <div className="bg-indigo-500 h-1.5 rounded-full transition-all duration-500" style={{ width: `${resume.heuristicScore.sectionCompleteness}%` }} />
+                    </div>
+                    <p className="text-[11px] font-mono text-slate-500">Summary, Experience, Education, Skills, Projects.</p>
                   </div>
-                  <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
-                    <div className="bg-indigo-500 h-1.5 rounded-full" style={{ width: `${resume.heuristicScore.sectionCompleteness}%` }} />
-                  </div>
-                  <p className="text-[11px] text-slate-500 mt-2">Summary, Experience, Education, Skills, Projects.</p>
                 </div>
 
-                <div className="p-4 bg-slate-900/80 border border-slate-800 rounded-2xl">
-                  <div className="flex justify-between text-xs mb-1">
-                    <span className="text-slate-300 font-semibold">Quantifiable Impact (20%)</span>
-                    <span className="text-purple-400 font-bold">{resume.heuristicScore.quantifiableImpact}%</span>
+                <div className="doppelrand-shell">
+                  <div className="doppelrand-core p-4 space-y-2">
+                    <div className="flex justify-between text-xs font-mono">
+                      <span className="text-slate-300 font-medium">QUANTIFIABLE IMPACT (20%)</span>
+                      <span className="text-indigo-300 font-bold tabular-nums">{resume.heuristicScore.quantifiableImpact}%</span>
+                    </div>
+                    <div className="w-full bg-white/5 rounded-full h-1.5 overflow-hidden">
+                      <div className="bg-indigo-400 h-1.5 rounded-full transition-all duration-500" style={{ width: `${resume.heuristicScore.quantifiableImpact}%` }} />
+                    </div>
+                    <p className="text-[11px] font-mono text-slate-500">Metrics, percentage gains ($X, 3x), user scale.</p>
                   </div>
-                  <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
-                    <div className="bg-purple-500 h-1.5 rounded-full" style={{ width: `${resume.heuristicScore.quantifiableImpact}%` }} />
-                  </div>
-                  <p className="text-[11px] text-slate-500 mt-2">Presence of %, multipliers ($X, 3x), user counts.</p>
                 </div>
 
-                <div className="p-4 bg-slate-900/80 border border-slate-800 rounded-2xl">
-                  <div className="flex justify-between text-xs mb-1">
-                    <span className="text-slate-300 font-semibold">Action Verbs Strength (15%)</span>
-                    <span className="text-blue-400 font-bold">{resume.heuristicScore.actionVerbs}%</span>
+                <div className="doppelrand-shell">
+                  <div className="doppelrand-core p-4 space-y-2">
+                    <div className="flex justify-between text-xs font-mono">
+                      <span className="text-slate-300 font-medium">ACTION VERBS STRENGTH (15%)</span>
+                      <span className="text-indigo-300 font-bold tabular-nums">{resume.heuristicScore.actionVerbs}%</span>
+                    </div>
+                    <div className="w-full bg-white/5 rounded-full h-1.5 overflow-hidden">
+                      <div className="bg-indigo-500 h-1.5 rounded-full transition-all duration-500" style={{ width: `${resume.heuristicScore.actionVerbs}%` }} />
+                    </div>
+                    <p className="text-[11px] font-mono text-slate-500">Strong execution verbs vs passive responsibility phrases.</p>
                   </div>
-                  <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
-                    <div className="bg-blue-500 h-1.5 rounded-full" style={{ width: `${resume.heuristicScore.actionVerbs}%` }} />
-                  </div>
-                  <p className="text-[11px] text-slate-500 mt-2">Strong verbs vs weak passive phrases.</p>
                 </div>
 
-                <div className="p-4 bg-slate-900/80 border border-slate-800 rounded-2xl">
-                  <div className="flex justify-between text-xs mb-1">
-                    <span className="text-slate-300 font-semibold">Readability & Length (15%)</span>
-                    <span className="text-emerald-400 font-bold">{resume.heuristicScore.readability}%</span>
+                <div className="doppelrand-shell">
+                  <div className="doppelrand-core p-4 space-y-2">
+                    <div className="flex justify-between text-xs font-mono">
+                      <span className="text-slate-300 font-medium">READABILITY & DENSITY (15%)</span>
+                      <span className="text-emerald-400 font-bold tabular-nums">{resume.heuristicScore.readability}%</span>
+                    </div>
+                    <div className="w-full bg-white/5 rounded-full h-1.5 overflow-hidden">
+                      <div className="bg-emerald-500 h-1.5 rounded-full transition-all duration-500" style={{ width: `${resume.heuristicScore.readability}%` }} />
+                    </div>
+                    <p className="text-[11px] font-mono text-slate-500">Word count balance and scannable bullet structure.</p>
                   </div>
-                  <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
-                    <div className="bg-emerald-500 h-1.5 rounded-full" style={{ width: `${resume.heuristicScore.readability}%` }} />
-                  </div>
-                  <p className="text-[11px] text-slate-500 mt-2">Word count density and bullet formatting.</p>
                 </div>
 
-                <div className="p-4 bg-slate-900/80 border border-slate-800 rounded-2xl">
-                  <div className="flex justify-between text-xs mb-1">
-                    <span className="text-slate-300 font-semibold">Skill Density (15%)</span>
-                    <span className="text-amber-400 font-bold">{resume.heuristicScore.skillDensity}%</span>
+                <div className="doppelrand-shell">
+                  <div className="doppelrand-core p-4 space-y-2">
+                    <div className="flex justify-between text-xs font-mono">
+                      <span className="text-slate-300 font-medium">SKILL DENSITY (15%)</span>
+                      <span className="text-indigo-400 font-bold tabular-nums">{resume.heuristicScore.skillDensity}%</span>
+                    </div>
+                    <div className="w-full bg-white/5 rounded-full h-1.5 overflow-hidden">
+                      <div className="bg-indigo-400 h-1.5 rounded-full transition-all duration-500" style={{ width: `${resume.heuristicScore.skillDensity}%` }} />
+                    </div>
+                    <p className="text-[11px] font-mono text-slate-500">{resume.extractedSkills.length} canonical technologies extracted.</p>
                   </div>
-                  <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
-                    <div className="bg-amber-500 h-1.5 rounded-full" style={{ width: `${resume.heuristicScore.skillDensity}%` }} />
-                  </div>
-                  <p className="text-[11px] text-slate-500 mt-2">{resume.extractedSkills.length} verified technologies mapped.</p>
                 </div>
 
-                <div className="p-4 bg-slate-900/80 border border-slate-800 rounded-2xl">
-                  <div className="flex justify-between text-xs mb-1">
-                    <span className="text-slate-300 font-semibold">ATS Formatting Safety (15%)</span>
-                    <span className="text-teal-400 font-bold">{resume.heuristicScore.atsFormatting}%</span>
+                <div className="doppelrand-shell">
+                  <div className="doppelrand-core p-4 space-y-2">
+                    <div className="flex justify-between text-xs font-mono">
+                      <span className="text-slate-300 font-medium">ATS PARSER SAFETY (15%)</span>
+                      <span className="text-emerald-400 font-bold tabular-nums">{resume.heuristicScore.atsFormatting}%</span>
+                    </div>
+                    <div className="w-full bg-white/5 rounded-full h-1.5 overflow-hidden">
+                      <div className="bg-emerald-500 h-1.5 rounded-full transition-all duration-500" style={{ width: `${resume.heuristicScore.atsFormatting}%` }} />
+                    </div>
+                    <p className="text-[11px] font-mono text-slate-500">Clean single-column parsing, verifiable contact info.</p>
                   </div>
-                  <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
-                    <div className="bg-teal-500 h-1.5 rounded-full" style={{ width: `${resume.heuristicScore.atsFormatting}%` }} />
-                  </div>
-                  <p className="text-[11px] text-slate-500 mt-2">Contact info presence, single-column parsing.</p>
                 </div>
               </div>
 
               {/* Strengths & Critical Issues Breakdown */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Strengths */}
-                <div className="p-6 bg-slate-900/80 border border-slate-800 rounded-3xl space-y-3">
-                  <h3 className="text-sm font-bold text-emerald-400 flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4" />
-                    <span>Identified Resume Strengths</span>
-                  </h3>
-                  <div className="space-y-2">
-                    {resume.feedback.strengths.map((str, idx) => (
-                      <div key={idx} className="p-3 bg-emerald-500/5 border border-emerald-500/20 rounded-xl text-xs text-slate-300 flex items-start gap-2">
-                        <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                        <span>{str}</span>
-                      </div>
-                    ))}
+                <div className="doppelrand-shell">
+                  <div className="doppelrand-core p-6 space-y-4">
+                    <h3 className="text-xs font-mono uppercase tracking-wider font-bold text-emerald-400 flex items-center gap-2">
+                      <CheckCircle className="w-4 h-4" />
+                      <span>IDENTIFIED RESUME STRENGTHS</span>
+                    </h3>
+                    <div className="space-y-2.5">
+                      {resume.feedback.strengths.map((str, idx) => (
+                        <div key={idx} className="p-3 bg-emerald-500/5 border border-emerald-500/15 rounded-xl text-xs text-slate-200 flex items-start gap-2.5">
+                          <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                          <span className="leading-relaxed">{str}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
                 {/* Critical Issues & Actionable Fixes */}
-                <div className="p-6 bg-slate-900/80 border border-slate-800 rounded-3xl space-y-3">
-                  <h3 className="text-sm font-bold text-amber-400 flex items-center gap-2">
-                    <AlertTriangle className="w-4 h-4" />
-                    <span>Actionable Improvements</span>
-                  </h3>
-                  <div className="space-y-2">
-                    {resume.feedback.criticalIssues.map((iss, idx) => (
-                      <div key={idx} className="p-3 bg-amber-500/5 border border-amber-500/20 rounded-xl text-xs text-slate-300 flex items-start gap-2">
-                        <ChevronRight className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
-                        <span>{iss}</span>
-                      </div>
-                    ))}
-                    {resume.feedback.improvements.map((imp, idx) => (
-                      <div key={`imp_${idx}`} className="p-3 bg-slate-800/80 border border-slate-700 rounded-xl text-xs text-slate-300 space-y-1">
-                        <div className="font-semibold text-indigo-300">Section: {imp.section.toUpperCase()}</div>
-                        <div>Fix: {imp.suggestedFix}</div>
-                        <div className="text-[11px] text-slate-400 italic">Reason: {imp.reason}</div>
-                      </div>
-                    ))}
+                <div className="doppelrand-shell">
+                  <div className="doppelrand-core p-6 space-y-4">
+                    <h3 className="text-xs font-mono uppercase tracking-wider font-bold text-amber-400 flex items-center gap-2">
+                      <AlertTriangle className="w-4 h-4" />
+                      <span>ACTIONABLE OPTIMIZATIONS</span>
+                    </h3>
+                    <div className="space-y-2.5">
+                      {resume.feedback.criticalIssues.map((iss, idx) => (
+                        <div key={idx} className="p-3 bg-amber-500/5 border border-amber-500/15 rounded-xl text-xs text-slate-200 flex items-start gap-2.5">
+                          <ChevronRight className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
+                          <span className="leading-relaxed">{iss}</span>
+                        </div>
+                      ))}
+                      {resume.feedback.improvements.map((imp, idx) => (
+                        <div key={`imp_${idx}`} className="p-3 bg-white/[0.02] border border-white/5 rounded-xl text-xs text-slate-300 space-y-1">
+                          <div className="font-mono text-[11px] font-semibold text-indigo-300 uppercase">SECTION: {imp.section}</div>
+                          <div className="text-white">Fix: {imp.suggestedFix}</div>
+                          <div className="text-[11px] text-slate-500 italic">Reason: {imp.reason}</div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
 
               {/* Extracted Skills Tag Cloud */}
-              <div className="p-6 bg-slate-900/80 border border-slate-800 rounded-3xl space-y-3">
-                <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-indigo-400" />
-                  <span>Verified Skills Extracted from Document ({resume.extractedSkills.length})</span>
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {resume.extractedSkills.map((sk) => (
-                    <span
-                      key={sk}
-                      className="px-3 py-1 bg-slate-800 text-slate-200 border border-slate-700 rounded-lg text-xs font-medium"
-                    >
-                      {sk}
-                    </span>
-                  ))}
+              <div className="doppelrand-shell">
+                <div className="doppelrand-core p-6 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-xs font-mono uppercase tracking-wider font-bold text-white flex items-center gap-2">
+                      <CheckCircle className="w-4 h-4 text-indigo-400" />
+                      <span>CANONICAL SKILLS EXTRACTED ({resume.extractedSkills.length})</span>
+                    </h3>
+                    <span className="text-[10px] font-mono text-slate-500">NORMALIZED TAXONOMY</span>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {resume.extractedSkills.map((sk) => (
+                      <span
+                        key={sk}
+                        className="px-3 py-1 bg-white/[0.03] text-slate-200 border border-white/10 rounded-full text-xs font-mono font-medium hover:border-indigo-500/30 transition"
+                      >
+                        {sk}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -485,88 +506,92 @@ export const ResumeAnalyzerPage: React.FC = () => {
           {/* TAB 2: JOB DESCRIPTION COMPARISON */}
           {activeSubTab === 'jobMatch' && (
             <div className="space-y-6">
-              <div className="p-6 bg-slate-900/90 border border-slate-800 rounded-3xl space-y-4">
-                <div>
-                  <h2 className="text-base font-bold text-white">Compare Resume with Target Job Description</h2>
-                  <p className="text-xs text-slate-400">
-                    Paste any job post to detect exact missing keywords, required skill alignment, and tailoring suggestions.
-                  </p>
+              <div className="doppelrand-shell">
+                <div className="doppelrand-core p-6 sm:p-8 space-y-4">
+                  <div>
+                    <h2 className="text-base font-bold text-white font-display">Target Job Alignment Analysis</h2>
+                    <p className="text-xs text-slate-400 mt-0.5">
+                      Paste any candidate job description to detect exact missing keywords, required core skills, and strategic tailoring advice.
+                    </p>
+                  </div>
+
+                  <textarea
+                    rows={6}
+                    value={jobDescriptionInput}
+                    onChange={(e) => setJobDescriptionInput(e.target.value)}
+                    placeholder="Paste target job description (e.g. Nexus Cloud Technologies - Junior Full Stack Engineer)..."
+                    className="w-full px-4 py-3 bg-black/40 border border-white/10 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500/60 font-mono leading-relaxed"
+                  />
+
+                  <button
+                    onClick={handleCompareJob}
+                    disabled={isComparing || jobDescriptionInput.length < 30}
+                    className="btn-nested-spring px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white rounded-full text-xs font-mono font-semibold flex items-center gap-2 transition shadow-[0_4px_16px_rgba(79,70,229,0.35)]"
+                  >
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>{isComparing ? 'Running Match Analysis...' : 'Compare Against My Resume'}</span>
+                  </button>
                 </div>
-
-                <textarea
-                  rows={6}
-                  value={jobDescriptionInput}
-                  onChange={(e) => setJobDescriptionInput(e.target.value)}
-                  placeholder="Paste target job description (e.g. Nexus Cloud Technologies - Junior Full Stack Engineer)..."
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-700 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 font-mono"
-                />
-
-                <button
-                  onClick={handleCompareJob}
-                  disabled={isComparing || jobDescriptionInput.length < 30}
-                  className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white rounded-xl text-xs font-bold flex items-center gap-2 transition shadow-lg shadow-indigo-600/30"
-                >
-                  <Sparkles className="w-4 h-4" />
-                  <span>{isComparing ? 'Running Match Analysis...' : 'Compare Against My Resume'}</span>
-                </button>
               </div>
 
               {jobComparisonResult && (
-                <div className="p-6 bg-slate-900/90 border border-slate-800 rounded-3xl space-y-6 shadow-xl">
-                  <div className="flex items-center justify-between pb-4 border-b border-slate-800">
-                    <div>
-                      <h3 className="text-lg font-bold text-white">{jobComparisonResult.jobTitle}</h3>
-                      <p className="text-xs text-slate-400">Target Role Match Breakdown</p>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-3xl font-black text-indigo-400">{jobComparisonResult.matchPercentage}%</div>
-                      <span className="text-[10px] text-slate-400 font-medium">Job Alignment Score</span>
-                    </div>
-                  </div>
-
-                  {/* Skills lists */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Matched */}
-                    <div className="p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-2xl space-y-2">
-                      <h4 className="text-xs font-bold text-emerald-400 flex items-center gap-1.5">
-                        <CheckCircle className="w-3.5 h-3.5" />
-                        <span>Matched Required Skills ({jobComparisonResult.matchedSkills.length})</span>
-                      </h4>
-                      <div className="flex flex-wrap gap-1.5">
-                        {jobComparisonResult.matchedSkills.map(s => (
-                          <span key={s} className="px-2.5 py-1 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-lg text-xs font-medium">
-                            ✓ {s}
-                          </span>
-                        ))}
+                <div className="doppelrand-shell">
+                  <div className="doppelrand-core p-6 sm:p-8 space-y-6">
+                    <div className="flex items-center justify-between pb-4 border-b border-white/[0.08]">
+                      <div>
+                        <div className="text-[10px] font-mono text-indigo-400 uppercase tracking-wider mb-0.5">TARGET ROLE COMPARISON</div>
+                        <h3 className="text-lg font-bold text-white font-display">{jobComparisonResult.jobTitle}</h3>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-3xl font-extrabold text-indigo-400 font-mono tabular-nums">{jobComparisonResult.matchPercentage}%</div>
+                        <span className="text-[10px] font-mono text-slate-500 uppercase">JOB ALIGNMENT INDEX</span>
                       </div>
                     </div>
 
-                    {/* Missing */}
-                    <div className="p-4 bg-rose-500/5 border border-rose-500/20 rounded-2xl space-y-2">
-                      <h4 className="text-xs font-bold text-rose-400 flex items-center gap-1.5">
-                        <AlertTriangle className="w-3.5 h-3.5" />
-                        <span>Missing Priority Skills ({jobComparisonResult.missingCriticalSkills.length})</span>
-                      </h4>
-                      <div className="flex flex-wrap gap-1.5">
-                        {jobComparisonResult.missingCriticalSkills.map(s => (
-                          <span key={s} className="px-2.5 py-1 bg-rose-500/20 text-rose-300 border border-rose-500/30 rounded-lg text-xs font-medium">
-                            + {s}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Tailoring Advice */}
-                  <div className="p-4 bg-slate-800/80 border border-slate-700 rounded-2xl space-y-2">
-                    <h4 className="text-xs font-bold text-indigo-300">Tailoring & Preparation Advice:</h4>
-                    <div className="space-y-1">
-                      {jobComparisonResult.tailoringAdvice.map((adv, idx) => (
-                        <div key={idx} className="text-xs text-slate-300 flex items-start gap-2">
-                          <span className="text-indigo-400 font-bold">•</span>
-                          <span>{adv}</span>
+                    {/* Skills lists */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {/* Matched */}
+                      <div className="p-4 bg-emerald-500/5 border border-emerald-500/15 rounded-xl space-y-2">
+                        <h4 className="text-xs font-mono font-bold text-emerald-400 flex items-center gap-1.5 uppercase">
+                          <CheckCircle className="w-3.5 h-3.5" />
+                          <span>Matched Required Skills ({jobComparisonResult.matchedSkills.length})</span>
+                        </h4>
+                        <div className="flex flex-wrap gap-1.5">
+                          {jobComparisonResult.matchedSkills.map(s => (
+                            <span key={s} className="px-2.5 py-1 bg-emerald-500/15 text-emerald-300 border border-emerald-500/25 rounded-full text-xs font-mono font-medium">
+                              ✓ {s}
+                            </span>
+                          ))}
                         </div>
-                      ))}
+                      </div>
+
+                      {/* Missing */}
+                      <div className="p-4 bg-rose-500/5 border border-rose-500/15 rounded-xl space-y-2">
+                        <h4 className="text-xs font-mono font-bold text-rose-400 flex items-center gap-1.5 uppercase">
+                          <AlertTriangle className="w-3.5 h-3.5" />
+                          <span>Missing Priority Skills ({jobComparisonResult.missingCriticalSkills.length})</span>
+                        </h4>
+                        <div className="flex flex-wrap gap-1.5">
+                          {jobComparisonResult.missingCriticalSkills.map(s => (
+                            <span key={s} className="px-2.5 py-1 bg-rose-500/15 text-rose-300 border border-rose-500/25 rounded-full text-xs font-mono font-medium">
+                              + {s}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Tailoring Advice */}
+                    <div className="p-4 bg-white/[0.02] border border-white/5 rounded-xl space-y-2">
+                      <h4 className="text-xs font-mono font-bold text-indigo-300 uppercase">Tailoring & Preparation Strategy:</h4>
+                      <div className="space-y-1.5">
+                        {jobComparisonResult.tailoringAdvice.map((adv, idx) => (
+                          <div key={idx} className="text-xs text-slate-300 flex items-start gap-2">
+                            <span className="text-indigo-400 font-bold">•</span>
+                            <span className="leading-relaxed">{adv}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -578,110 +603,114 @@ export const ResumeAnalyzerPage: React.FC = () => {
           {activeSubTab === 'editor' && (
             <div className="space-y-6">
               {/* Bullet point enhancer */}
-              <div className="p-6 bg-slate-900/90 border border-slate-800 rounded-3xl space-y-4">
-                <div>
-                  <h2 className="text-base font-bold text-white flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-purple-400" />
-                    <span>Google XYZ Bullet Point Enhancer</span>
-                  </h2>
-                  <p className="text-xs text-slate-400 mt-0.5">
-                    Rewrite passive duties into authoritative results: <span className="text-indigo-300 font-semibold">"Accomplished [X] as measured by [Y], by doing [Z]"</span>.
-                  </p>
-                </div>
-
-                <div className="space-y-3">
-                  <input
-                    type="text"
-                    value={selectedBullet}
-                    onChange={(e) => setSelectedBullet(e.target.value)}
-                    placeholder="e.g. Developed responsive client dashboard pages using React and Tailwind CSS."
-                    className="w-full px-4 py-2.5 bg-slate-950 border border-slate-700 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
-                  />
-
-                  <div className="flex gap-2">
-                    <button
-                      onClick={handleRewriteBullet}
-                      disabled={isRewriting || !selectedBullet.trim()}
-                      className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 transition shadow-lg shadow-indigo-600/30"
-                    >
-                      <Sparkles className="w-3.5 h-3.5" />
-                      <span>{isRewriting ? 'Generating Revision...' : 'Generate High-Impact Rewrite'}</span>
-                    </button>
-                  </div>
-                </div>
-
-                {/* Rewrite comparison card */}
-                {rewriteSuggestion && (
-                  <div className="mt-4 p-5 bg-slate-950 border border-indigo-500/30 rounded-2xl space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-                      <div className="p-3 bg-slate-900 border border-slate-800 rounded-xl space-y-1">
-                        <span className="text-[11px] font-bold text-slate-400 uppercase">Original</span>
-                        <p className="text-slate-300 font-mono text-[11px]">{rewriteSuggestion.original}</p>
-                      </div>
-
-                      <div className="p-3 bg-indigo-950/40 border border-indigo-500/40 rounded-xl space-y-1">
-                        <span className="text-[11px] font-bold text-indigo-400 uppercase">Suggested Google XYZ Rewrite</span>
-                        <p className="text-white font-mono text-[11px] font-semibold">{rewriteSuggestion.suggested}</p>
-                      </div>
-                    </div>
-
-                    <p className="text-xs text-slate-400 italic">
-                      Why it works: {rewriteSuggestion.impactExplanation}
+              <div className="doppelrand-shell">
+                <div className="doppelrand-core p-6 sm:p-8 space-y-4">
+                  <div>
+                    <h2 className="text-base font-bold text-white font-display flex items-center gap-2">
+                      <Sparkles className="w-4 h-4 text-indigo-400" />
+                      <span>Google XYZ Achievement Bullet Enhancer</span>
+                    </h2>
+                    <p className="text-xs text-slate-400 mt-0.5">
+                      Rewrite passive duties into authoritative results: <span className="text-indigo-300 font-mono font-semibold">"Accomplished [X] as measured by [Y], by doing [Z]"</span>.
                     </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    <input
+                      type="text"
+                      value={selectedBullet}
+                      onChange={(e) => setSelectedBullet(e.target.value)}
+                      placeholder="e.g. Developed responsive client dashboard pages using React and Tailwind CSS."
+                      className="w-full px-4 py-3 bg-black/40 border border-white/10 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500/60 font-sans"
+                    />
 
                     <div className="flex gap-2">
                       <button
-                        onClick={applyRewriteToResume}
-                        className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 transition shadow-sm"
+                        onClick={handleRewriteBullet}
+                        disabled={isRewriting || !selectedBullet.trim()}
+                        className="btn-nested-spring px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white rounded-full text-xs font-mono font-semibold flex items-center gap-1.5 transition shadow-[0_4px_16px_rgba(79,70,229,0.35)]"
                       >
-                        <Check className="w-3.5 h-3.5" />
-                        <span>Accept & Apply to Resume Text</span>
-                      </button>
-
-                      <button
-                        onClick={() => setRewriteSuggestion(null)}
-                        className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-medium transition"
-                      >
-                        Reject
+                        <Sparkles className="w-3.5 h-3.5" />
+                        <span>{isRewriting ? 'Generating Revision...' : 'Generate High-Impact Rewrite'}</span>
                       </button>
                     </div>
                   </div>
-                )}
+
+                  {/* Rewrite comparison card */}
+                  {rewriteSuggestion && (
+                    <div className="mt-4 p-5 bg-black/40 border border-indigo-500/25 rounded-2xl space-y-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono">
+                        <div className="p-3 bg-white/[0.02] border border-white/5 rounded-xl space-y-1">
+                          <span className="text-[10px] font-bold text-slate-400 uppercase">Original</span>
+                          <p className="text-slate-300 text-[11px] leading-relaxed">{rewriteSuggestion.original}</p>
+                        </div>
+
+                        <div className="p-3 bg-indigo-950/30 border border-indigo-500/30 rounded-xl space-y-1">
+                          <span className="text-[10px] font-bold text-indigo-400 uppercase">Suggested Google XYZ Rewrite</span>
+                          <p className="text-white text-[11px] font-semibold leading-relaxed">{rewriteSuggestion.suggested}</p>
+                        </div>
+                      </div>
+
+                      <p className="text-xs text-slate-400 italic">
+                        Why it works: {rewriteSuggestion.impactExplanation}
+                      </p>
+
+                      <div className="flex gap-2">
+                        <button
+                          onClick={applyRewriteToResume}
+                          className="btn-nested-spring px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full text-xs font-mono font-semibold flex items-center gap-1.5 transition shadow-sm"
+                        >
+                          <Check className="w-3.5 h-3.5" />
+                          <span>Accept & Apply to Resume Text</span>
+                        </button>
+
+                        <button
+                          onClick={() => setRewriteSuggestion(null)}
+                          className="px-4 py-2 bg-white/[0.04] hover:bg-white/[0.08] text-slate-300 border border-white/10 rounded-full text-xs font-mono transition"
+                        >
+                          Reject
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* Full Resume Text Editor & Export */}
-              <div className="p-6 bg-slate-900/90 border border-slate-800 rounded-3xl space-y-4">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                  <div>
-                    <h2 className="text-base font-bold text-white">Interactive Resume Document Editor</h2>
-                    <p className="text-xs text-slate-400">Edit, review revisions, and export clean formatted documents.</p>
+              <div className="doppelrand-shell">
+                <div className="doppelrand-core p-6 sm:p-8 space-y-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div>
+                      <h2 className="text-base font-bold text-white font-display">Interactive Resume Document Editor</h2>
+                      <p className="text-xs text-slate-400 mt-0.5">Edit, review revisions, and export clean formatted documents.</p>
+                    </div>
+
+                    <div className="flex gap-2">
+                      <button
+                        onClick={handleExportText}
+                        className="px-4 py-2 bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 border border-white/10 rounded-full text-xs font-mono font-medium flex items-center gap-1.5 transition"
+                      >
+                        <Download className="w-3.5 h-3.5 text-indigo-400" />
+                        <span>Export TXT</span>
+                      </button>
+
+                      <button
+                        onClick={handlePrintPdf}
+                        className="btn-nested-spring px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-full text-xs font-mono font-semibold flex items-center gap-1.5 transition shadow-[0_4px_16px_rgba(79,70,229,0.35)]"
+                      >
+                        <Download className="w-3.5 h-3.5" />
+                        <span>Print / Export PDF</span>
+                      </button>
+                    </div>
                   </div>
 
-                  <div className="flex gap-2">
-                    <button
-                      onClick={handleExportText}
-                      className="px-3.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition"
-                    >
-                      <Download className="w-3.5 h-3.5 text-indigo-400" />
-                      <span>Export TXT</span>
-                    </button>
-
-                    <button
-                      onClick={handlePrintPdf}
-                      className="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 transition shadow-sm"
-                    >
-                      <Download className="w-3.5 h-3.5" />
-                      <span>Print / Export PDF</span>
-                    </button>
-                  </div>
+                  <textarea
+                    rows={14}
+                    value={editableResumeText}
+                    onChange={(e) => setEditableResumeText(e.target.value)}
+                    className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-xl text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500/60 font-mono leading-relaxed"
+                  />
                 </div>
-
-                <textarea
-                  rows={14}
-                  value={editableResumeText}
-                  onChange={(e) => setEditableResumeText(e.target.value)}
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-700 rounded-xl text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 font-mono leading-relaxed"
-                />
               </div>
             </div>
           )}

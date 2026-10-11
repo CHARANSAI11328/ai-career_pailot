@@ -57,7 +57,7 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* Desktop Navigation - Pill Bar */}
-          <nav className="hidden xl:flex items-center space-x-1 p-1 bg-white/[0.02] border border-white/5 rounded-full shadow-inner">
+          <nav className="hidden lg:flex items-center space-x-0.5 xl:space-x-1 p-1 bg-white/[0.02] border border-white/5 rounded-full shadow-inner">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = activeTab === item.id;
@@ -65,21 +65,21 @@ export const Navbar: React.FC = () => {
                 <button
                   key={item.id}
                   onClick={() => setActiveTab(item.id)}
-                  className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ${
+                  className={`flex items-center space-x-1 px-2.5 xl:px-3 py-1.5 rounded-full text-[11px] xl:text-xs font-medium transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? 'bg-indigo-600 text-white shadow-[0_2px_12px_rgba(79,70,229,0.4)]'
+                      ? 'bg-indigo-600 text-white shadow-[0_2px_12px_rgba(79,70,229,0.4)] font-semibold'
                       : 'text-slate-300 hover:text-white hover:bg-white/5'
                   }`}
                 >
-                  <Icon className="w-3.5 h-3.5 opacity-80" />
-                  <span>{item.label}</span>
+                  <Icon className="w-3.5 h-3.5 opacity-80 shrink-0" />
+                  <span className="truncate">{item.label}</span>
                 </button>
               );
             })}
           </nav>
 
           {/* Right Utility: Language & Profile & Mobile Toggle */}
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 shrink-0">
             {/* Language dropdown */}
             <div className="relative flex items-center bg-white/[0.04] border border-white/10 rounded-full px-2.5 py-1 transition hover:border-white/20">
               <Globe className="w-3.5 h-3.5 text-slate-400 mr-1.5" />
@@ -97,14 +97,14 @@ export const Navbar: React.FC = () => {
             {/* Profile Avatar / Onboarding Shortcut */}
             <button
               onClick={() => setActiveTab('onboarding')}
-              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-full border text-xs font-medium transition-all duration-300 ${
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-full border text-xs font-medium transition-all duration-200 cursor-pointer ${
                 activeTab === 'onboarding'
                   ? 'border-indigo-500/50 bg-indigo-500/15 text-white shadow-sm'
                   : 'border-white/10 bg-white/[0.03] text-slate-300 hover:text-white hover:border-white/25'
               }`}
             >
               <User className="w-3.5 h-3.5 text-indigo-400" />
-              <span className="hidden md:inline max-w-[90px] truncate font-sans">
+              <span className="hidden sm:inline max-w-[85px] truncate font-sans">
                 {profile ? profile.name : t.nav.onboarding}
               </span>
             </button>
@@ -112,17 +112,17 @@ export const Navbar: React.FC = () => {
             {/* Mobile menu trigger */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="xl:hidden p-2 text-slate-300 hover:text-white rounded-xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition"
+              className="lg:hidden p-2 text-slate-300 hover:text-white rounded-full bg-white/[0.04] border border-white/10 hover:border-white/20 transition cursor-pointer"
               aria-label="Toggle navigation"
             >
-              {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+              {mobileMenuOpen ? <X className="w-4 h-4 text-indigo-400" /> : <Menu className="w-4 h-4" />}
             </button>
           </div>
         </div>
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="xl:hidden mt-3 pt-3 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-2 animate-in fade-in slide-in-from-top-2 duration-300">
+          <div className="lg:hidden mt-3 pt-3 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-2 animate-in fade-in slide-in-from-top-2 duration-200">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = activeTab === item.id;
@@ -133,14 +133,14 @@ export const Navbar: React.FC = () => {
                     setActiveTab(item.id);
                     setMobileMenuOpen(false);
                   }}
-                  className={`flex items-center space-x-2 px-3 py-2 rounded-xl text-xs font-medium transition ${
+                  className={`flex items-center space-x-2 px-3 py-2.5 rounded-xl text-xs font-medium transition cursor-pointer ${
                     isActive
-                      ? 'bg-indigo-600 text-white'
-                      : 'text-slate-300 hover:text-white hover:bg-white/5'
+                      ? 'bg-indigo-600 text-white font-semibold shadow-sm'
+                      : 'text-slate-300 hover:text-white hover:bg-white/[0.06] bg-white/[0.02]'
                   }`}
                 >
-                  <Icon className="w-3.5 h-3.5" />
-                  <span>{item.label}</span>
+                  <Icon className="w-3.5 h-3.5 shrink-0" />
+                  <span className="truncate">{item.label}</span>
                 </button>
               );
             })}

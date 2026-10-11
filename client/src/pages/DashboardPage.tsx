@@ -158,7 +158,7 @@ export const DashboardPage: React.FC = () => {
           <div className="doppelrand-core p-5 space-y-2">
             <div className="flex items-center justify-between text-xs font-mono text-slate-400">
               <span className="uppercase tracking-wider">ATS HEALTH SCORE</span>
-              <FileText className="w-4 h-4 text-purple-400" />
+              <FileText className="w-4 h-4 text-indigo-400" />
             </div>
             <div className="text-3xl font-extrabold text-white font-mono tabular-nums">
               {resume ? `${resume.heuristicScore.overall}/100` : '—'}
@@ -174,7 +174,7 @@ export const DashboardPage: React.FC = () => {
           <div className="doppelrand-core p-5 space-y-2">
             <div className="flex items-center justify-between text-xs font-mono text-slate-400">
               <span className="uppercase tracking-wider">LEARNING ROADMAP</span>
-              <MapPin className="w-4 h-4 text-emerald-400" />
+              <MapPin className="w-4 h-4 text-indigo-400" />
             </div>
             <div className="text-3xl font-extrabold text-white font-mono tabular-nums">
               {roadmap ? `${roadmapPct}%` : '0%'}
@@ -190,7 +190,7 @@ export const DashboardPage: React.FC = () => {
           <div className="doppelrand-core p-5 space-y-2">
             <div className="flex items-center justify-between text-xs font-mono text-slate-400">
               <span className="uppercase tracking-wider">MOCK INTERVIEW</span>
-              <Mic className="w-4 h-4 text-amber-400" />
+              <Mic className="w-4 h-4 text-indigo-400" />
             </div>
             <div className="text-3xl font-extrabold text-white font-mono tabular-nums">
               READY
@@ -339,10 +339,10 @@ export const DashboardPage: React.FC = () => {
 
               <button
                 onClick={() => setActiveTab('counselor')}
-                className="w-full p-3 bg-white/[0.02] hover:bg-white/[0.06] text-left rounded-xl border border-white/5 hover:border-white/10 transition flex items-center justify-between group"
+                className="w-full p-3 bg-white/[0.02] hover:bg-white/[0.06] text-left rounded-xl border border-white/5 hover:border-white/10 transition flex items-center justify-between group cursor-pointer"
               >
                 <div>
-                  <div className="text-xs font-bold text-white group-hover:text-indigo-300 font-display">AI Counselor Chat</div>
+                  <div className="text-xs font-bold text-white group-hover:text-indigo-300 font-display transition">AI Counselor Chat</div>
                   <div className="text-[11px] text-slate-400">Ask career & salary questions</div>
                 </div>
                 <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-indigo-400 group-hover:translate-x-0.5 transition-transform" />
@@ -350,35 +350,35 @@ export const DashboardPage: React.FC = () => {
 
               <button
                 onClick={() => setActiveTab('interview')}
-                className="w-full p-3 bg-white/[0.02] hover:bg-white/[0.06] text-left rounded-xl border border-white/5 hover:border-white/10 transition flex items-center justify-between group"
+                className="w-full p-3 bg-white/[0.02] hover:bg-white/[0.06] text-left rounded-xl border border-white/5 hover:border-white/10 transition flex items-center justify-between group cursor-pointer"
               >
                 <div>
-                  <div className="text-xs font-bold text-white group-hover:text-amber-300 font-display">Mock Interview</div>
+                  <div className="text-xs font-bold text-white group-hover:text-indigo-300 font-display transition">Mock Interview</div>
                   <div className="text-[11px] text-slate-400">Voice practice & STAR grading</div>
                 </div>
-                <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-amber-400 group-hover:translate-x-0.5 transition-transform" />
+                <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-indigo-400 group-hover:translate-x-0.5 transition-transform" />
               </button>
 
               <button
                 onClick={() => setActiveTab('jobs')}
-                className="w-full p-3 bg-white/[0.02] hover:bg-white/[0.06] text-left rounded-xl border border-white/5 hover:border-white/10 transition flex items-center justify-between group"
+                className="w-full p-3 bg-white/[0.02] hover:bg-white/[0.06] text-left rounded-xl border border-white/5 hover:border-white/10 transition flex items-center justify-between group cursor-pointer"
               >
                 <div>
-                  <div className="text-xs font-bold text-white group-hover:text-blue-300 font-display">Job Market Matches</div>
+                  <div className="text-xs font-bold text-white group-hover:text-indigo-300 font-display transition">Job Market Matches</div>
                   <div className="text-[11px] text-slate-400">Matched with your active skills</div>
                 </div>
-                <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-blue-400 group-hover:translate-x-0.5 transition-transform" />
+                <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-indigo-400 group-hover:translate-x-0.5 transition-transform" />
               </button>
 
               <button
                 onClick={() => setActiveTab('branding')}
-                className="w-full p-3 bg-white/[0.02] hover:bg-white/[0.06] text-left rounded-xl border border-white/5 hover:border-white/10 transition flex items-center justify-between group"
+                className="w-full p-3 bg-white/[0.02] hover:bg-white/[0.06] text-left rounded-xl border border-white/5 hover:border-white/10 transition flex items-center justify-between group cursor-pointer"
               >
                 <div>
-                  <div className="text-xs font-bold text-white group-hover:text-purple-300 font-display">LinkedIn Optimizer</div>
+                  <div className="text-xs font-bold text-white group-hover:text-indigo-300 font-display transition">LinkedIn Optimizer</div>
                   <div className="text-[11px] text-slate-400">Generate headline & pitch</div>
                 </div>
-                <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-purple-400 group-hover:translate-x-0.5 transition-transform" />
+                <ChevronRight className="w-4 h-4 text-slate-500 group-hover:text-indigo-400 group-hover:translate-x-0.5 transition-transform" />
               </button>
             </div>
           </div>
