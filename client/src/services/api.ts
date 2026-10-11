@@ -679,9 +679,9 @@ ${conversationHistory}`;
         response: aiResponse,
         meta: {
           provider: 'gemini-live',
-          model: 'gemini-3.8-flash',
+          model: 'gemini-2.5-flash',
           isLive: true,
-          notes: 'Generated in real-time by Google Gemini 3.8 Flash'
+          notes: 'Generated in real-time by Google Gemini 2.5 Flash'
         }
       };
     } catch (err: any) {
