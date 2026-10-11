@@ -49,36 +49,36 @@ const MainContent: React.FC<{ onOpenKeyModal: () => void }> = ({ onOpenKeyModal 
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100">
+    <div className="min-h-screen flex flex-col bg-[#060709] text-slate-100 selection:bg-indigo-600 selection:text-white">
       <DemoBanner onOpenKeyModal={onOpenKeyModal} />
       <Navbar />
       <main className="flex-1">
         {renderPage()}
       </main>
 
-      {/* Professional Footer */}
-      <footer className="border-t border-slate-800 bg-slate-950 py-8 px-4 text-xs text-slate-500">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center space-x-2">
-            <span className="font-bold text-slate-400">CareerPilot AI</span>
-            <span>•</span>
-            <span>Next-Gen Career Counselor, Resume Analyzer & Career Intelligence</span>
+      {/* Titanium Hardware Footer */}
+      <footer className="border-t border-white/[0.08] bg-[#080A0F] py-10 px-4 sm:px-6 text-xs text-slate-500">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="flex items-center space-x-3">
+            <span className="font-extrabold text-slate-200 font-display">CareerPilot AI</span>
+            <span className="text-white/20">•</span>
+            <span className="text-slate-400 font-mono text-[11px]">AUTONOMOUS CAREER RADAR // v2.5</span>
           </div>
 
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-5 text-xs font-mono">
             <button
               onClick={() => setActiveTab('judgeDemo')}
               className="text-indigo-400 hover:text-indigo-300 font-semibold transition"
             >
-              Judge Tour
+              JUDGE TOUR
             </button>
             <button
               onClick={onOpenKeyModal}
-              className="text-slate-400 hover:text-slate-300 transition"
+              className="text-slate-400 hover:text-slate-200 transition"
             >
-              AI Settings
+              KEY CONFIG
             </button>
-            <span className="text-slate-600">Built for Google DeepMind Hackathon</span>
+            <span className="text-slate-600 hidden md:inline">Google DeepMind Hackathon Edition</span>
           </div>
         </div>
       </footer>

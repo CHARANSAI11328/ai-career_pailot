@@ -8,7 +8,9 @@ import {
   Globe,
   Award,
   RefreshCw,
-  Compass
+  Compass,
+  Zap,
+  Cpu
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useProfile } from '../context/ProfileContext';
@@ -84,112 +86,120 @@ export const CounselorPage: React.FC = () => {
 
   const quickPrompts = [
     'How do I transition into AI / Machine Learning?',
-    'What are current 2025-2026 salary benchmarks for my role?',
+    'What are current salary benchmarks for my role in 2025-2026?',
     'Suggest an industry-grade portfolio capstone project',
     'Compare Full Stack Developer vs Cloud DevOps Engineer'
   ];
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-8 space-y-6 text-left">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 bg-slate-900/90 border border-slate-800 rounded-3xl shadow-lg">
-        <div className="flex items-center space-x-3.5">
-          <div className="p-3 bg-gradient-to-tr from-purple-600 to-indigo-600 text-white rounded-2xl shadow-lg shadow-purple-600/30">
-            <Bot className="w-6 h-6" />
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <h1 className="text-xl font-bold text-white">Interactive AI Career Counselor</h1>
-              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">
-                {aiStatus?.isLive ? 'Gemini 2.5 Flash' : 'Heuristic Engine'}
-              </span>
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10 space-y-6 text-left">
+      {/* Header Cockpit */}
+      <div className="doppelrand-shell">
+        <div className="doppelrand-core p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-center space-x-3.5">
+            <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/25 flex items-center justify-center text-indigo-400 shadow-inner">
+              <Bot className="w-6 h-6" />
             </div>
-            <p className="text-xs text-slate-400 mt-0.5">
-              Personalized career guidance grounded in your active skills, education, and constraints.
-            </p>
+            <div>
+              <div className="flex items-center gap-2">
+                <h1 className="text-xl sm:text-2xl font-extrabold text-white font-display">
+                  Interactive Career Counselor
+                </h1>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-indigo-500/15 text-indigo-300 border border-indigo-500/25 uppercase">
+                  {aiStatus?.isLive ? 'Gemini 2.5 Flash' : 'Heuristic Engine'}
+                </span>
+              </div>
+              <p className="text-xs text-slate-400 mt-0.5">
+                Real-time strategic career mentoring grounded in your active profile, skills, and industry signals.
+              </p>
+            </div>
           </div>
-        </div>
 
-        {/* Language selector */}
-        <div className="flex items-center space-x-2 bg-slate-800/80 border border-slate-700 px-3 py-1.5 rounded-xl text-xs">
-          <Globe className="w-4 h-4 text-slate-400" />
-          <span className="text-slate-400">Response Language:</span>
-          <select
-            value={language}
-            onChange={(e) => setLanguage(e.target.value as SupportedLanguage)}
-            className="bg-transparent text-white font-semibold focus:outline-none cursor-pointer"
-          >
-            <option value="en" className="bg-slate-900">English</option>
-            <option value="te" className="bg-slate-900">తెలుగు (Telugu)</option>
-            <option value="hi" className="bg-slate-900">हिन्दी (Hindi)</option>
-          </select>
+          {/* Language selector */}
+          <div className="flex items-center space-x-2 bg-white/[0.04] border border-white/10 px-3 py-1.5 rounded-full text-xs font-mono">
+            <Globe className="w-3.5 h-3.5 text-slate-400" />
+            <span className="text-slate-400">LANGUAGE:</span>
+            <select
+              value={language}
+              onChange={(e) => setLanguage(e.target.value as SupportedLanguage)}
+              className="bg-transparent text-white font-bold focus:outline-none cursor-pointer pr-1"
+            >
+              <option value="en" className="bg-[#0D1017]">English</option>
+              <option value="te" className="bg-[#0D1017]">తెలుగు (Telugu)</option>
+              <option value="hi" className="bg-[#0D1017]">हिन्दी (Hindi)</option>
+            </select>
+          </div>
         </div>
       </div>
 
-      {/* Chat messages viewport */}
-      <div className="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 h-[520px] overflow-y-auto space-y-4 shadow-xl">
-        {messages.map((m) => {
-          const isUser = m.role === 'user';
-          return (
-            <div
-              key={m.id}
-              className={`flex items-start space-x-3 ${isUser ? 'flex-row-reverse space-x-reverse' : ''}`}
-            >
+      {/* Chat Messages Viewport (Doppelrand container) */}
+      <div className="doppelrand-shell">
+        <div className="doppelrand-core p-6 h-[540px] overflow-y-auto space-y-4">
+          {messages.map((m) => {
+            const isUser = m.role === 'user';
+            return (
               <div
-                className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 text-white text-xs font-bold ${
-                  isUser ? 'bg-indigo-600' : 'bg-purple-600'
-                }`}
+                key={m.id}
+                className={`flex items-start space-x-3 ${isUser ? 'flex-row-reverse space-x-reverse' : ''}`}
               >
-                {isUser ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
-              </div>
-
-              <div
-                className={`max-w-2xl rounded-2xl px-4 py-3 text-xs leading-relaxed ${
-                  isUser
-                    ? 'bg-indigo-600 text-white'
-                    : 'bg-slate-800/90 border border-slate-700 text-slate-100'
-                }`}
-              >
-                <div className="whitespace-pre-wrap">{m.content}</div>
                 <div
-                  className={`text-[10px] mt-1.5 text-right ${
-                    isUser ? 'text-indigo-200' : 'text-slate-400'
+                  className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 text-white text-xs font-bold shadow-sm ${
+                    isUser
+                      ? 'bg-indigo-600'
+                      : 'bg-white/[0.06] border border-white/10 text-indigo-400'
                   }`}
                 >
-                  {m.timestamp}
+                  {isUser ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
+                </div>
+
+                <div
+                  className={`max-w-2xl rounded-2xl px-4 py-3 text-xs leading-relaxed transition-all duration-200 ${
+                    isUser
+                      ? 'bg-indigo-600 text-white shadow-md'
+                      : 'bg-black/40 border border-white/[0.08] text-slate-100 shadow-inner'
+                  }`}
+                >
+                  <div className="whitespace-pre-wrap">{m.content}</div>
+                  <div
+                    className={`text-[10px] font-mono mt-2 text-right ${
+                      isUser ? 'text-indigo-200' : 'text-slate-400'
+                    }`}
+                  >
+                    {m.timestamp}
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
 
-        {isSending && (
-          <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 rounded-xl bg-purple-600 flex items-center justify-center text-white shrink-0">
-              <Bot className="w-4 h-4" />
+          {isSending && (
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 rounded-full bg-white/[0.06] border border-white/10 flex items-center justify-center text-indigo-400 shrink-0">
+                <Bot className="w-4 h-4" />
+              </div>
+              <div className="p-3 bg-black/40 border border-white/[0.08] rounded-2xl text-xs text-slate-300 flex items-center gap-2 font-mono">
+                <span className="w-2 h-2 rounded-full bg-indigo-400 animate-ping" />
+                <span>Counselor is synthesizing response...</span>
+              </div>
             </div>
-            <div className="p-3 bg-slate-800/90 border border-slate-700 rounded-2xl text-xs text-slate-300 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-purple-400 animate-ping" />
-              <span>Counselor is synthesizing guidance...</span>
-            </div>
-          </div>
-        )}
+          )}
 
-        <div ref={chatEndRef} />
+          <div ref={chatEndRef} />
+        </div>
       </div>
 
       {/* Suggested prompt chips */}
-      <div className="flex flex-wrap gap-2 items-center">
-        <span className="text-[11px] text-slate-500 font-semibold flex items-center gap-1">
-          <Sparkles className="w-3 h-3 text-purple-400" />
-          <span>Quick queries:</span>
+      <div className="flex flex-wrap gap-2 items-center px-1">
+        <span className="text-[11px] font-mono text-slate-400 flex items-center gap-1.5 uppercase tracking-wider">
+          <Sparkles className="w-3 h-3 text-indigo-400" />
+          <span>SUGGESTED QUERIES:</span>
         </span>
         {quickPrompts.map((q) => (
           <button
             key={q}
             onClick={() => handleSend(q)}
             disabled={isSending}
-            className="px-2.5 py-1 bg-slate-800/70 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 rounded-lg text-xs transition"
+            className="px-3 py-1 bg-white/[0.03] hover:bg-white/[0.08] text-slate-300 hover:text-white border border-white/10 rounded-full text-xs font-mono transition active:scale-95"
           >
             {q}
           </button>
@@ -204,23 +214,26 @@ export const CounselorPage: React.FC = () => {
         }}
         className="flex gap-2"
       >
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Ask anything about roles, roadmaps, interview prep, or career transitions..."
-          className="flex-1 px-4 py-3 bg-slate-900 border border-slate-800 focus:border-indigo-500 rounded-2xl text-xs text-white placeholder-slate-500 focus:outline-none"
-        />
+        <div className="flex-1 relative">
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Ask about salary benchmarks, role transitions, learning roadmaps, or interview tips..."
+            className="w-full px-5 py-3.5 bg-black/40 border border-white/10 focus:border-indigo-500/70 rounded-full text-xs text-white placeholder-slate-400 focus:outline-none transition shadow-inner font-sans"
+          />
+        </div>
 
         <button
           type="submit"
           disabled={isSending || !input.trim()}
-          className="px-5 py-3 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white rounded-2xl text-xs font-bold flex items-center gap-1.5 transition shadow-lg shadow-indigo-600/30"
+          className="btn-nested-spring px-6 py-3.5 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 text-white rounded-full text-xs font-semibold flex items-center gap-2 transition shadow-[0_4px_16px_rgba(79,70,229,0.35)]"
         >
-          <Send className="w-3.5 h-3.5" />
           <span>Send</span>
+          <Send className="w-3.5 h-3.5" />
         </button>
       </form>
     </div>
   );
 };
+

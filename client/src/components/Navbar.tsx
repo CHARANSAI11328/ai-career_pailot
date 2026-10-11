@@ -12,7 +12,8 @@ import {
   Globe,
   Home,
   Menu,
-  X
+  X,
+  Sparkles
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useProfile } from '../context/ProfileContext';
@@ -35,28 +36,28 @@ export const Navbar: React.FC = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-40 bg-slate-900/95 backdrop-blur-md border-b border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+    <div className="sticky top-3 z-50 px-3 sm:px-6 max-w-7xl mx-auto w-full transition-all">
+      <header className="glass-island rounded-2xl sm:rounded-full px-3 sm:px-5 py-2 transition-all">
+        <div className="flex items-center justify-between">
+          {/* Logo with machined hardware badge */}
           <div
             onClick={() => setActiveTab('landing')}
-            className="flex items-center space-x-2.5 cursor-pointer group"
+            className="flex items-center space-x-3 cursor-pointer group select-none"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center shadow-lg shadow-indigo-500/25 group-hover:scale-105 transition">
-              <Compass className="w-5 h-5 text-white" />
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500/20 to-indigo-600/10 border border-indigo-500/30 flex items-center justify-center shadow-inner group-hover:border-indigo-400/60 transition-all duration-300 group-hover:scale-105">
+              <Compass className="w-4 h-4 text-indigo-400 group-hover:rotate-45 transition-transform duration-500" />
             </div>
             <div>
-              <div className="flex items-center gap-1.5">
-                <span className="text-lg font-black tracking-tight text-white">CareerPilot</span>
-                <span className="text-xs font-bold px-1.5 py-0.5 rounded bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">AI</span>
+              <div className="flex items-center gap-1.5 leading-none">
+                <span className="text-sm font-extrabold tracking-tight text-white font-display">CareerPilot</span>
+                <span className="text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded-full bg-indigo-500/15 text-indigo-300 border border-indigo-500/25">v2.5</span>
               </div>
-              <p className="text-[10px] text-slate-400 hidden sm:block tracking-wide">CAREER INTELLIGENCE</p>
+              <p className="text-[9px] font-mono tracking-widest text-slate-400 uppercase mt-0.5 hidden sm:block">AUTONOMOUS INTELLIGENCE</p>
             </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-1">
+          {/* Desktop Navigation - Pill Bar */}
+          <nav className="hidden xl:flex items-center space-x-1 p-1 bg-white/[0.02] border border-white/5 rounded-full shadow-inner">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = activeTab === item.id;
@@ -64,63 +65,64 @@ export const Navbar: React.FC = () => {
                 <button
                   key={item.id}
                   onClick={() => setActiveTab(item.id)}
-                  className={`flex items-center space-x-1.5 px-3 py-2 rounded-xl text-xs font-semibold transition ${
+                  className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ${
                     isActive
-                      ? 'bg-indigo-600 text-white shadow-sm'
-                      : 'text-slate-300 hover:text-white hover:bg-slate-800/80'
+                      ? 'bg-indigo-600 text-white shadow-[0_2px_12px_rgba(79,70,229,0.4)]'
+                      : 'text-slate-300 hover:text-white hover:bg-white/5'
                   }`}
                 >
-                  <Icon className="w-3.5 h-3.5" />
+                  <Icon className="w-3.5 h-3.5 opacity-80" />
                   <span>{item.label}</span>
                 </button>
               );
             })}
           </nav>
 
-          {/* Right utility: Language & Profile */}
-          <div className="flex items-center space-x-2 sm:space-x-3">
+          {/* Right Utility: Language & Profile & Mobile Toggle */}
+          <div className="flex items-center space-x-2">
             {/* Language dropdown */}
-            <div className="relative flex items-center bg-slate-800/80 border border-slate-700 rounded-xl px-2 py-1">
+            <div className="relative flex items-center bg-white/[0.04] border border-white/10 rounded-full px-2.5 py-1 transition hover:border-white/20">
               <Globe className="w-3.5 h-3.5 text-slate-400 mr-1.5" />
               <select
                 value={language}
                 onChange={(e) => setLanguage(e.target.value as SupportedLanguage)}
-                className="bg-transparent text-xs font-semibold text-slate-200 focus:outline-none cursor-pointer pr-1"
+                className="bg-transparent text-xs font-mono font-medium text-slate-200 focus:outline-none cursor-pointer pr-1"
               >
-                <option value="en" className="bg-slate-900 text-white">EN</option>
-                <option value="te" className="bg-slate-900 text-white">తెలుగు</option>
-                <option value="hi" className="bg-slate-900 text-white">हिन्दी</option>
+                <option value="en" className="bg-[#0D1017] text-white">EN</option>
+                <option value="te" className="bg-[#0D1017] text-white">తెలుగు</option>
+                <option value="hi" className="bg-[#0D1017] text-white">हिन्दी</option>
               </select>
             </div>
 
             {/* Profile Avatar / Onboarding Shortcut */}
             <button
               onClick={() => setActiveTab('onboarding')}
-              className={`flex items-center space-x-2 px-3 py-1.5 rounded-xl border text-xs font-semibold transition ${
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-full border text-xs font-medium transition-all duration-300 ${
                 activeTab === 'onboarding'
-                  ? 'border-indigo-500 bg-indigo-500/10 text-white'
-                  : 'border-slate-700 bg-slate-800/80 text-slate-300 hover:border-slate-600'
+                  ? 'border-indigo-500/50 bg-indigo-500/15 text-white shadow-sm'
+                  : 'border-white/10 bg-white/[0.03] text-slate-300 hover:text-white hover:border-white/25'
               }`}
             >
               <User className="w-3.5 h-3.5 text-indigo-400" />
-              <span className="hidden md:inline max-w-[100px] truncate">
+              <span className="hidden md:inline max-w-[90px] truncate font-sans">
                 {profile ? profile.name : t.nav.onboarding}
               </span>
             </button>
 
-            {/* Mobile menu button */}
+            {/* Mobile menu trigger */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800"
+              className="xl:hidden p-2 text-slate-300 hover:text-white rounded-xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition"
+              aria-label="Toggle navigation"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </button>
           </div>
         </div>
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden py-3 border-t border-slate-800 grid grid-cols-2 gap-1.5">
+          <div className="xl:hidden mt-3 pt-3 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-2 animate-in fade-in slide-in-from-top-2 duration-300">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = activeTab === item.id;
@@ -131,20 +133,21 @@ export const Navbar: React.FC = () => {
                     setActiveTab(item.id);
                     setMobileMenuOpen(false);
                   }}
-                  className={`flex items-center space-x-2 px-3 py-2.5 rounded-xl text-xs font-semibold transition ${
+                  className={`flex items-center space-x-2 px-3 py-2 rounded-xl text-xs font-medium transition ${
                     isActive
                       ? 'bg-indigo-600 text-white'
-                      : 'text-slate-300 hover:text-white hover:bg-slate-800'
+                      : 'text-slate-300 hover:text-white hover:bg-white/5'
                   }`}
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="w-3.5 h-3.5" />
                   <span>{item.label}</span>
                 </button>
               );
             })}
           </div>
         )}
-      </div>
-    </header>
+      </header>
+    </div>
   );
 };
+

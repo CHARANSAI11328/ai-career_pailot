@@ -173,23 +173,27 @@ export const ResumeAnalyzerPage: React.FC = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 text-left">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 text-left">
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-black text-white flex items-center gap-2.5">
-            <FileText className="w-7 h-7 text-indigo-400" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-indigo-300 text-[11px] font-mono tracking-wider uppercase mb-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
+            <span>DETERMINISTIC ATS DIAGNOSTIC</span>
+          </div>
+          <h1 className="text-2xl sm:text-4xl font-extrabold text-white font-display flex items-center gap-2.5">
+            <FileText className="w-8 h-8 text-indigo-400" />
             <span>Resume Analyzer & ATS Audit</span>
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
-            Deterministic heuristic audit, verifiable skill extraction, job description gap analysis, and Google XYZ bullet editor.
+          <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-2xl leading-relaxed">
+            Deterministic heuristic audit, verifiable skill extraction, job description gap analysis, and Google XYZ achievement bullet editor.
           </p>
         </div>
 
         {resume && (
           <button
             onClick={handleDeleteResume}
-            className="px-3 py-1.5 bg-rose-950/40 hover:bg-rose-900/60 text-rose-300 border border-rose-800/40 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition"
+            className="px-4 py-2 bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 border border-rose-500/20 rounded-full text-xs font-mono flex items-center gap-1.5 transition"
             title="Permanently delete all resume records for privacy"
           >
             <Trash2 className="w-3.5 h-3.5" />
@@ -200,64 +204,66 @@ export const ResumeAnalyzerPage: React.FC = () => {
 
       {/* Upload Zone (if no resume or user wants to re-upload) */}
       {!resume && (
-        <div className="p-8 sm:p-12 bg-slate-900/90 border-2 border-dashed border-slate-700 hover:border-indigo-500/60 rounded-3xl text-center space-y-4 transition">
-          <div className="w-16 h-16 rounded-2xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center mx-auto border border-indigo-500/20">
-            <Upload className="w-8 h-8" />
-          </div>
-
-          <div>
-            <h2 className="text-lg font-bold text-white">Upload Your Resume to Begin</h2>
-            <p className="text-xs text-slate-400 max-w-md mx-auto mt-1">
-              Supports <span className="text-indigo-300 font-semibold">PDF, DOCX, and TXT</span> files up to 5MB. Files are analyzed securely in-memory and never permanently stored.
-            </p>
-          </div>
-
-          {uploadError && (
-            <div className="p-3 bg-rose-500/10 border border-rose-500/30 rounded-xl text-xs text-rose-400 max-w-md mx-auto">
-              {uploadError}
+        <div className="doppelrand-shell">
+          <div className="doppelrand-core p-8 sm:p-14 text-center space-y-5 border-2 border-dashed border-white/15 hover:border-indigo-500/50 transition-colors">
+            <div className="w-16 h-16 rounded-2xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center mx-auto border border-indigo-500/20 shadow-inner">
+              <Upload className="w-7 h-7" />
             </div>
-          )}
 
-          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-            <label className="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold cursor-pointer transition shadow-lg shadow-indigo-600/30 flex items-center gap-2">
-              <Upload className="w-4 h-4" />
-              <span>{isUploading ? 'Parsing Document...' : 'Choose File (PDF / Word / TXT)'}</span>
-              <input
-                type="file"
-                accept=".pdf,.docx,.txt"
-                onChange={handleFileUpload}
-                disabled={isUploading}
-                className="hidden"
-              />
-            </label>
+            <div>
+              <h2 className="text-xl font-bold text-white font-display">Ingest Candidate Resume</h2>
+              <p className="text-xs text-slate-400 max-w-md mx-auto mt-1 leading-relaxed">
+                Accepts <span className="text-indigo-300 font-mono font-semibold">PDF, DOCX, and TXT</span> up to 5MB. In-memory document parsing ensures files are never permanently retained.
+              </p>
+            </div>
 
-            <button
-              onClick={() => setPasteMode(!pasteMode)}
-              className="px-5 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-xl text-xs font-semibold transition"
-            >
-              {pasteMode ? 'Cancel Paste' : 'Or Paste Text Directly'}
-            </button>
-          </div>
+            {uploadError && (
+              <div className="p-3 bg-rose-500/10 border border-rose-500/30 rounded-xl text-xs text-rose-400 max-w-md mx-auto font-mono">
+                {uploadError}
+              </div>
+            )}
 
-          {/* Paste Raw Text Area */}
-          {pasteMode && (
-            <div className="max-w-2xl mx-auto pt-4 space-y-3 text-left">
-              <textarea
-                rows={8}
-                value={pastedText}
-                onChange={(e) => setPastedText(e.target.value)}
-                placeholder="Paste your plain text resume content here..."
-                className="w-full px-4 py-3 bg-slate-950 border border-slate-700 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 font-mono"
-              />
+            <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+              <label className="btn-nested-spring px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-full text-xs font-semibold cursor-pointer transition shadow-[0_4px_16px_rgba(79,70,229,0.35)] flex items-center gap-2">
+                <Upload className="w-4 h-4" />
+                <span>{isUploading ? 'Parsing Document...' : 'Choose File (PDF / Word / TXT)'}</span>
+                <input
+                  type="file"
+                  accept=".pdf,.docx,.txt"
+                  onChange={handleFileUpload}
+                  disabled={isUploading}
+                  className="hidden"
+                />
+              </label>
+
               <button
-                onClick={handlePasteSubmit}
-                disabled={isUploading || pastedText.length < 50}
-                className="w-full py-2.5 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white rounded-xl text-xs font-bold transition shadow-lg shadow-indigo-600/30"
+                onClick={() => setPasteMode(!pasteMode)}
+                className="px-5 py-3 bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 border border-white/10 rounded-full text-xs font-mono transition"
               >
-                {isUploading ? 'Analyzing Text...' : 'Analyze Pasted Resume Text'}
+                {pasteMode ? 'Cancel Paste' : 'Or Paste Raw Text'}
               </button>
             </div>
-          )}
+
+            {/* Paste Raw Text Area */}
+            {pasteMode && (
+              <div className="max-w-2xl mx-auto pt-4 space-y-3 text-left">
+                <textarea
+                  rows={8}
+                  value={pastedText}
+                  onChange={(e) => setPastedText(e.target.value)}
+                  placeholder="Paste your plain text resume content here..."
+                  className="w-full px-4 py-3 bg-black/40 border border-white/15 rounded-2xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 font-mono"
+                />
+                <button
+                  onClick={handlePasteSubmit}
+                  disabled={isUploading || pastedText.length < 50}
+                  className="btn-nested-spring w-full py-3 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white rounded-full text-xs font-semibold transition shadow-md font-mono"
+                >
+                  {isUploading ? 'Analyzing Text...' : 'Analyze Pasted Resume Text'}
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       )}
 
@@ -265,41 +271,41 @@ export const ResumeAnalyzerPage: React.FC = () => {
       {resume && (
         <div className="space-y-6">
           {/* Sub-Navigation Tabs */}
-          <div className="flex border-b border-slate-800 space-x-4">
+          <div className="flex border-b border-white/[0.08] space-x-3 overflow-x-auto pb-2">
             <button
               onClick={() => setActiveSubTab('audit')}
-              className={`pb-3 text-xs font-bold border-b-2 flex items-center gap-1.5 transition ${
+              className={`px-4 py-2 text-xs font-mono font-medium rounded-full flex items-center gap-1.5 transition ${
                 activeSubTab === 'audit'
-                  ? 'border-indigo-500 text-indigo-400'
-                  : 'border-transparent text-slate-400 hover:text-white'
+                  ? 'bg-indigo-600 text-white shadow-sm'
+                  : 'text-slate-400 hover:text-white bg-white/[0.03] border border-white/5'
               }`}
             >
-              <FileText className="w-4 h-4" />
-              <span>Full ATS Audit & Rubric ({resume.heuristicScore.overall}/100)</span>
+              <FileText className="w-3.5 h-3.5" />
+              <span>ATS AUDIT RUBRIC ({resume.heuristicScore.overall}/100)</span>
             </button>
 
             <button
               onClick={() => setActiveSubTab('jobMatch')}
-              className={`pb-3 text-xs font-bold border-b-2 flex items-center gap-1.5 transition ${
+              className={`px-4 py-2 text-xs font-mono font-medium rounded-full flex items-center gap-1.5 transition ${
                 activeSubTab === 'jobMatch'
-                  ? 'border-indigo-500 text-indigo-400'
-                  : 'border-transparent text-slate-400 hover:text-white'
+                  ? 'bg-indigo-600 text-white shadow-sm'
+                  : 'text-slate-400 hover:text-white bg-white/[0.03] border border-white/5'
               }`}
             >
-              <Briefcase className="w-4 h-4" />
-              <span>Target Job Comparison & Gap Detector</span>
+              <Briefcase className="w-3.5 h-3.5" />
+              <span>TARGET JOB COMPARISON</span>
             </button>
 
             <button
               onClick={() => setActiveSubTab('editor')}
-              className={`pb-3 text-xs font-bold border-b-2 flex items-center gap-1.5 transition ${
+              className={`px-4 py-2 text-xs font-mono font-medium rounded-full flex items-center gap-1.5 transition ${
                 activeSubTab === 'editor'
-                  ? 'border-indigo-500 text-indigo-400'
-                  : 'border-transparent text-slate-400 hover:text-white'
+                  ? 'bg-indigo-600 text-white shadow-sm'
+                  : 'text-slate-400 hover:text-white bg-white/[0.03] border border-white/5'
               }`}
             >
-              <Edit3 className="w-4 h-4" />
-              <span>Google XYZ Bullet Rewriter & Export</span>
+              <Edit3 className="w-3.5 h-3.5" />
+              <span>GOOGLE XYZ BULLET REWRITER</span>
             </button>
           </div>
 
@@ -307,39 +313,41 @@ export const ResumeAnalyzerPage: React.FC = () => {
           {activeSubTab === 'audit' && (
             <div className="space-y-6">
               {/* Overall Score Banner */}
-              <div className="p-6 bg-slate-900/90 border border-slate-800 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
-                <div className="flex items-center space-x-6">
-                  <div className="relative w-24 h-24 rounded-full flex items-center justify-center bg-slate-950 border-4 border-indigo-500/40 shadow-inner">
-                    <span className="text-3xl font-black text-white">
-                      {resume.heuristicScore.overall}
-                    </span>
-                    <span className="absolute bottom-2 text-[10px] text-slate-400">/ 100</span>
-                  </div>
-                  <div>
-                    <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 mb-1">
-                      HEURISTIC ATS RUBRIC ASSESSMENT
+              <div className="doppelrand-shell">
+                <div className="doppelrand-core p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+                  <div className="flex items-center space-x-6">
+                    <div className="relative w-24 h-24 rounded-full flex items-center justify-center bg-black/60 border-4 border-indigo-500/40 shadow-inner shrink-0">
+                      <span className="text-3xl font-extrabold text-white font-mono tabular-nums">
+                        {resume.heuristicScore.overall}
+                      </span>
+                      <span className="absolute bottom-2 text-[10px] font-mono text-slate-400">/ 100</span>
                     </div>
-                    <h2 className="text-xl font-bold text-white">
-                      {resume.heuristicScore.overall >= 80 ? 'Strong Interview Readiness' : resume.heuristicScore.overall >= 60 ? 'Moderate Foundation with Actionable Gaps' : 'Needs Substantive Optimization'}
-                    </h2>
-                    <p className="text-xs text-slate-400 max-w-lg mt-0.5">
-                      This score reflects measurable attributes: section completeness, quantifiable metrics density, active verb strength, and ATS layout readability.
-                    </p>
+                    <div>
+                      <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-indigo-500/15 text-indigo-300 border border-indigo-500/25 mb-1 uppercase">
+                        HEURISTIC ATS RUBRIC ASSESSMENT
+                      </div>
+                      <h2 className="text-xl font-bold text-white font-display">
+                        {resume.heuristicScore.overall >= 80 ? 'Strong Interview Readiness' : resume.heuristicScore.overall >= 60 ? 'Moderate Foundation with Actionable Gaps' : 'Needs Substantive Optimization'}
+                      </h2>
+                      <p className="text-xs text-slate-400 max-w-lg mt-0.5 leading-relaxed">
+                        Deterministic score reflects section completeness, quantifiable metrics density, active verb strength, and ATS layout readability.
+                      </p>
+                    </div>
                   </div>
-                </div>
 
-                <div className="flex flex-wrap gap-2">
-                  <button
-                    onClick={() => setActiveSubTab('editor')}
-                    className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 transition"
-                  >
-                    <Edit3 className="w-3.5 h-3.5" />
-                    <span>Rewrite Bullets</span>
-                  </button>
-                  <label className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-xl text-xs font-semibold cursor-pointer transition">
-                    <span>Re-upload File</span>
-                    <input type="file" accept=".pdf,.docx,.txt" onChange={handleFileUpload} className="hidden" />
-                  </label>
+                  <div className="flex flex-wrap gap-2">
+                    <button
+                      onClick={() => setActiveSubTab('editor')}
+                      className="btn-nested-spring px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-full text-xs font-mono font-semibold flex items-center gap-1.5 transition shadow-sm"
+                    >
+                      <Edit3 className="w-3.5 h-3.5" />
+                      <span>Rewrite Bullets</span>
+                    </button>
+                    <label className="px-4 py-2.5 bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 border border-white/10 rounded-full text-xs font-mono cursor-pointer transition">
+                      <span>Re-upload File</span>
+                      <input type="file" accept=".pdf,.docx,.txt" onChange={handleFileUpload} className="hidden" />
+                    </label>
+                  </div>
                 </div>
               </div>
 

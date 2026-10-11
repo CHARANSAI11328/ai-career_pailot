@@ -37,18 +37,26 @@ export class GeminiProvider {
       throw new Error('Gemini API client not initialized. Missing or invalid API key.');
     }
 
-    try {
-      // Use gemini-3.8-flash as the primary, supported model
-      const response = await this.client.models.generateContent({
-        model: 'gemini-3.8-flash',
-        contents: prompt,
-        config: systemInstruction ? { systemInstruction } : undefined
-      });
-
-      return response.text || '';
-    } catch (err: any) {
-      throw new Error(`Gemini API Error: ${err.message || 'Call failed'}`);
+    // Support candidate models with graceful fallback
+    const candidateModels = ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash'];
+    let lastErr: any = null;
+    for (const m of candidateModels) {
+      try {
+        const response = await this.client.models.generateContent({
+          model: m,
+          contents: prompt,
+          config: systemInstruction ? { systemInstruction } : undefined
+        });
+        return response.text || '';
+      } catch (err: any) {
+        lastErr = err;
+        if (err.message && (err.message.includes('API key not valid') || err.message.includes('permission'))) {
+          throw err;
+        }
+      }
     }
+
+    throw new Error(`Gemini API Error: ${lastErr?.message || 'Call failed'}`);
   }
 
   /**

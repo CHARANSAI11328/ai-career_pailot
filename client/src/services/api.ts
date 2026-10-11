@@ -25,35 +25,48 @@ function getActiveApiKey(): string {
 }
 
 /**
- * Call Gemini 3.8 Flash directly from browser
+ * Call Gemini Flash directly from browser with multi-model fallback
  */
 async function callGeminiLive(prompt: string, systemInstruction?: string): Promise<string> {
   const apiKey = getActiveApiKey();
   if (!apiKey) throw new Error('Gemini API key is not configured.');
 
   const fullPrompt = systemInstruction ? `${systemInstruction}\n\nUser Question:\n${prompt}` : prompt;
+  const models = ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash'];
+  let lastError: Error | null = null;
 
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${encodeURIComponent(apiKey)}`;
-  const res = await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      contents: [{ parts: [{ text: fullPrompt }] }]
-    })
-  });
+  for (const model of models) {
+    try {
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(apiKey)}`;
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: fullPrompt }] }]
+        })
+      });
 
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({}));
-    throw new Error(err?.error?.message || `Gemini API returned status ${res.status}`);
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err?.error?.message || `Gemini API (${model}) returned status ${res.status}`);
+      }
+
+      const data = await res.json();
+      const candidateText = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+      if (!candidateText) {
+        throw new Error(`No candidate content returned by ${model}.`);
+      }
+
+      return candidateText.trim();
+    } catch (err: any) {
+      lastError = err;
+      if (err.message && (err.message.includes('API key not valid') || err.message.includes('permission'))) {
+        throw err;
+      }
+    }
   }
 
-  const data = await res.json();
-  const candidateText = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-  if (!candidateText) {
-    throw new Error('No candidate content returned by Gemini.');
-  }
-
-  return candidateText.trim();
+  throw lastError || new Error('Failed to get response from Gemini API.');
 }
 
 /**

@@ -168,96 +168,105 @@ export const MockInterviewPage: React.FC = () => {
   const isFinished = session?.completedAt !== undefined;
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 space-y-8 text-left">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10 space-y-8 text-left">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 bg-slate-900/90 border border-slate-800 rounded-3xl shadow-lg">
-        <div className="flex items-center space-x-3.5">
-          <div className="p-3 bg-amber-500/10 text-amber-400 rounded-2xl border border-amber-500/20">
-            <Mic className="w-6 h-6" />
+      <div className="doppelrand-shell">
+        <div className="doppelrand-core p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-center space-x-3.5">
+            <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 border border-amber-500/25 flex items-center justify-center shadow-inner">
+              <Mic className="w-6 h-6" />
+            </div>
+            <div>
+              <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-white/[0.04] border border-white/10 text-amber-300 text-[10px] font-mono tracking-wider uppercase mb-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                <span>REAL-TIME STAR SIMULATOR</span>
+              </div>
+              <h1 className="text-xl sm:text-2xl font-extrabold text-white font-display">AI Mock Interview Simulator</h1>
+              <p className="text-xs text-slate-400 mt-0.5">
+                Practice role-specific technical and behavioral STAR questions with real-time speech and rubric evaluation.
+              </p>
+            </div>
           </div>
-          <div>
-            <h1 className="text-xl font-bold text-white">AI Mock Interview Simulator</h1>
-            <p className="text-xs text-slate-400 mt-0.5">
-              Practice role-specific technical and behavioral STAR questions with real-time rubric evaluation.
-            </p>
-          </div>
-        </div>
 
-        {session && (
-          <button
-            onClick={() => setSession(null)}
-            className="px-3.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition"
-          >
-            <RefreshCw className="w-3.5 h-3.5" />
-            <span>New Session</span>
-          </button>
-        )}
+          {session && (
+            <button
+              onClick={() => setSession(null)}
+              className="px-4 py-2 bg-white/[0.04] hover:bg-white/[0.08] text-slate-300 border border-white/10 rounded-full text-xs font-mono flex items-center gap-1.5 transition"
+            >
+              <RefreshCw className="w-3.5 h-3.5" />
+              <span>New Session</span>
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Configuration & Start Setup */}
       {!session && (
-        <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6 shadow-xl">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs">
-            <div>
-              <label className="block text-slate-300 font-semibold mb-1.5">Target Role</label>
-              <select
-                value={role}
-                onChange={(e) => setRole(e.target.value)}
-                className="w-full px-3 py-2.5 bg-slate-950 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-indigo-500 cursor-pointer"
-              >
-                <option value="Full Stack Software Engineer">Full Stack Software Engineer</option>
-                <option value="AI / Machine Learning Engineer">AI / Machine Learning Engineer</option>
-                <option value="Cloud & DevOps Platform Engineer">Cloud & DevOps Platform Engineer</option>
-                <option value="Data Analyst & Analytics Engineer">Data Analyst & Analytics Engineer</option>
-                <option value="Technical Product Manager">Technical Product Manager</option>
-              </select>
+        <div className="doppelrand-shell">
+          <div className="doppelrand-core p-6 sm:p-8 space-y-6">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs">
+              <div>
+                <label className="block text-slate-300 font-mono text-[11px] uppercase tracking-wider mb-2">TARGET ROLE</label>
+                <select
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                  className="w-full px-3.5 py-3 bg-black/40 border border-white/10 rounded-xl text-white focus:outline-none focus:border-indigo-500/60 cursor-pointer font-sans"
+                >
+                  <option value="Full Stack Software Engineer">Full Stack Software Engineer</option>
+                  <option value="AI / Machine Learning Engineer">AI / Machine Learning Engineer</option>
+                  <option value="Cloud & DevOps Platform Engineer">Cloud & DevOps Platform Engineer</option>
+                  <option value="Data Analyst & Analytics Engineer">Data Analyst & Analytics Engineer</option>
+                  <option value="Technical Product Manager">Technical Product Manager</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-slate-300 font-mono text-[11px] uppercase tracking-wider mb-2">SENIORITY TIER</label>
+                <select
+                  value={level}
+                  onChange={(e) => setLevel(e.target.value)}
+                  className="w-full px-3.5 py-3 bg-black/40 border border-white/10 rounded-xl text-white focus:outline-none focus:border-indigo-500/60 cursor-pointer font-sans"
+                >
+                  <option value="Junior">Junior / Entry Level (0-2 yrs)</option>
+                  <option value="Mid">Mid-Level (2-5 yrs)</option>
+                  <option value="Senior">Senior Lead (5+ yrs)</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-slate-300 font-mono text-[11px] uppercase tracking-wider mb-2">INTERVIEW FORMAT</label>
+                <select
+                  value={interviewType}
+                  onChange={(e) => setInterviewType(e.target.value as any)}
+                  className="w-full px-3.5 py-3 bg-black/40 border border-white/10 rounded-xl text-white focus:outline-none focus:border-indigo-500/60 cursor-pointer font-sans"
+                >
+                  <option value="technical">Technical & System Architecture</option>
+                  <option value="behavioral">Behavioral (STAR Framework)</option>
+                  <option value="mixed">Mixed (Technical + Behavioral)</option>
+                </select>
+              </div>
             </div>
 
-            <div>
-              <label className="block text-slate-300 font-semibold mb-1.5">Seniority Level</label>
-              <select
-                value={level}
-                onChange={(e) => setLevel(e.target.value)}
-                className="w-full px-3 py-2.5 bg-slate-950 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-indigo-500 cursor-pointer"
-              >
-                <option value="Junior">Junior / Entry Level (0-2 yrs)</option>
-                <option value="Mid">Mid-Level (2-5 yrs)</option>
-                <option value="Senior">Senior Lead (5+ yrs)</option>
-              </select>
+            <div className="p-4 bg-black/40 border border-white/5 rounded-2xl text-xs text-slate-400 space-y-2 font-mono">
+              <div className="font-semibold text-slate-200 uppercase tracking-wide">EVALUATION PROTOCOL:</div>
+              <ul className="list-disc pl-5 space-y-1 text-slate-400">
+                <li>Receives 3 tailored questions sequenced one at a time.</li>
+                <li>Voice answering via Web Speech API or typing directly into the terminal.</li>
+                <li>Answers graded on Relevance, Technical Correctness, and STAR Structure.</li>
+                <li>Instant constructive coaching advice and exemplar model answers provided.</li>
+              </ul>
             </div>
 
-            <div>
-              <label className="block text-slate-300 font-semibold mb-1.5">Interview Format</label>
-              <select
-                value={interviewType}
-                onChange={(e) => setInterviewType(e.target.value as any)}
-                className="w-full px-3 py-2.5 bg-slate-950 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-indigo-500 cursor-pointer"
-              >
-                <option value="technical">Technical & System Architecture</option>
-                <option value="behavioral">Behavioral (STAR Framework)</option>
-                <option value="mixed">Mixed (Technical + Behavioral)</option>
-              </select>
-            </div>
+            <button
+              onClick={handleStartInterview}
+              disabled={isStarting}
+              className="btn-nested-spring group w-full py-4 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white rounded-full text-xs font-semibold flex items-center justify-center gap-2 transition shadow-[0_8px_25px_rgba(79,70,229,0.35)]"
+            >
+              <Play className="w-4 h-4 fill-current" />
+              <span>{isStarting ? 'Preparing Technical Questions...' : 'Start Mock Interview Session'}</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </button>
           </div>
-
-          <div className="p-4 bg-slate-950 border border-slate-800 rounded-2xl text-xs text-slate-400 space-y-2">
-            <div className="font-semibold text-slate-200">How the Simulation Works:</div>
-            <ul className="list-disc pl-5 space-y-1">
-              <li>You will receive 3 tailored questions one at a time.</li>
-              <li>You can speak your response via your microphone or type in the editor.</li>
-              <li>Each answer is evaluated on Relevance, Technical Correctness, and Clarity.</li>
-              <li>Receive immediate constructive coaching advice and an exemplar high-scoring answer.</li>
-            </ul>
-          </div>
-
-          <button
-            onClick={handleStartInterview}
-            disabled={isStarting}
-            className="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 transition shadow-lg shadow-indigo-600/30"
-          >
-            <Play className="w-4 h-4" />
-            <span>{isStarting ? 'Preparing Questions...' : 'Start Mock Interview Session'}</span>
-          </button>
         </div>
       )}
 
@@ -265,13 +274,14 @@ export const MockInterviewPage: React.FC = () => {
       {session && !isFinished && currentQuestion && (
         <div className="space-y-6">
           {/* Progress Tracker */}
-          <div className="flex items-center justify-between text-xs text-slate-400">
-            <span>Question {currentQuestionIndex + 1} of {session.questions.length}</span>
-            <span className="font-semibold text-indigo-400">{currentQuestion.category}</span>
+          <div className="flex items-center justify-between text-xs font-mono text-slate-400 px-1">
+            <span>QUESTION 0{currentQuestionIndex + 1} OF 0{session.questions.length}</span>
+            <span className="font-semibold text-indigo-400 uppercase tracking-wider">{currentQuestion.category}</span>
           </div>
 
           {/* Question Box */}
-          <div className="p-6 bg-slate-900/90 border border-slate-800 rounded-3xl space-y-4 shadow-xl">
+          <div className="doppelrand-shell">
+            <div className="doppelrand-core p-6 sm:p-8 space-y-4">
             <div className="flex items-start justify-between gap-4">
               <div className="space-y-1">
                 <span className="text-[10px] font-bold text-amber-400 uppercase tracking-wide">
@@ -396,42 +406,45 @@ export const MockInterviewPage: React.FC = () => {
                 </div>
               </div>
             )}
+            </div>
           </div>
         </div>
       )}
 
       {/* Final Session Completed Report Card */}
       {session && isFinished && (
-        <div className="p-8 bg-slate-900/90 border border-slate-800 rounded-3xl space-y-6 shadow-2xl text-center">
-          <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center mx-auto border border-emerald-500/20">
-            <Award className="w-8 h-8" />
-          </div>
-
-          <div>
-            <h2 className="text-2xl font-black text-white">Interview Simulation Complete!</h2>
-            <p className="text-xs text-slate-400 mt-1 max-w-md mx-auto">
-              Role: <span className="text-white font-semibold">{session.role}</span> ({session.level} Level)
-            </p>
-          </div>
-
-          <div className="p-6 bg-slate-950 border border-slate-800 rounded-2xl max-w-sm mx-auto">
-            <div className="text-4xl font-black text-indigo-400">
-              {session.overallScore}/100
+        <div className="doppelrand-shell">
+          <div className="doppelrand-core p-8 sm:p-12 space-y-6 text-center">
+            <div className="w-16 h-16 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mx-auto border border-emerald-500/25 shadow-inner">
+              <Award className="w-8 h-8" />
             </div>
-            <div className="text-xs text-slate-400 font-semibold mt-1">Overall Interview Readiness Score</div>
-          </div>
 
-          <p className="text-xs text-slate-300 max-w-xl mx-auto leading-relaxed">
-            {session.summaryFeedback}
-          </p>
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-display">Interview Simulation Complete</h2>
+              <p className="text-xs text-slate-400 mt-1 max-w-md mx-auto font-mono">
+                ROLE: <span className="text-white font-semibold">{session.role}</span> ({session.level} Tier)
+              </p>
+            </div>
 
-          <div className="flex justify-center gap-3 pt-2">
-            <button
-              onClick={() => setSession(null)}
-              className="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition shadow-lg shadow-indigo-600/30"
-            >
-              Start Another Practice Session
-            </button>
+            <div className="p-6 bg-black/40 border border-white/10 rounded-2xl max-w-sm mx-auto">
+              <div className="text-4xl font-extrabold text-indigo-400 font-mono tabular-nums">
+                {session.overallScore}/100
+              </div>
+              <div className="text-xs text-slate-400 font-mono mt-1 uppercase tracking-wider">READINESS INDEX</div>
+            </div>
+
+            <p className="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
+              {session.summaryFeedback}
+            </p>
+
+            <div className="flex justify-center gap-3 pt-2">
+              <button
+                onClick={() => setSession(null)}
+                className="btn-nested-spring px-6 py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-full text-xs font-semibold transition shadow-[0_8px_25px_rgba(79,70,229,0.35)]"
+              >
+                Start Another Practice Session
+              </button>
+            </div>
           </div>
         </div>
       )}

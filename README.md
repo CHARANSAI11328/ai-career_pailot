@@ -132,7 +132,7 @@ Create a `.env` file in the project root or configure via the UI:
 ```bash
 cp .env.example .env
 ```
-*(Optional: add your `GEMINI_API_KEY=AIzaSy...`. If left empty, the application runs automatically in offline Heuristic Demo Mode with zero errors!)*
+*(Optional: add your `GEMINI_API_KEY=your_gemini_api_key_here`. If left empty, the application runs automatically in offline Heuristic Demo Mode with zero errors!)*
 
 ### 3. Run Automated Tests
 ```bash
