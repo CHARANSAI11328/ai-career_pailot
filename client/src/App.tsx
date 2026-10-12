@@ -50,8 +50,11 @@ const MainContent: React.FC<{ onOpenKeyModal: () => void }> = ({ onOpenKeyModal 
 
   return (
     <div className="min-h-screen flex flex-col bg-[#060709] text-slate-100 selection:bg-indigo-600 selection:text-white">
-      <DemoBanner onOpenKeyModal={onOpenKeyModal} />
-      <Navbar />
+      {/* Unified Screen-Fitted Sticky Navigation Header */}
+      <div className="sticky top-0 z-50 w-full bg-[#07090E]/95 backdrop-blur-xl border-b border-white/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.6)]">
+        <DemoBanner onOpenKeyModal={onOpenKeyModal} />
+        <Navbar onOpenKeyModal={onOpenKeyModal} />
+      </div>
       <main className="flex-1">
         {renderPage()}
       </main>
